@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { CssLinearGradientData } from '../models/songhay-css-linear-gradient-data';
 import { CssRedGreenBlue } from '../models/songhay-css-red-green-blue';
 
@@ -8,7 +7,6 @@ import { CssRedGreenBlue } from '../models/songhay-css-red-green-blue';
  * @export
  * @class CssUtility
  */
-@Injectable()
 export class CssUtility {
     /**
      * gets #ffffff format from 0xFFFFFF format
@@ -17,7 +15,7 @@ export class CssUtility {
      * @returns {string}
      * @memberof CssUtility
      */
-    getColorHex(color: string): string {
+    static getColorHex(color: string): string | null {
         if (!color) {
             return null;
         }
@@ -31,7 +29,7 @@ export class CssUtility {
      * @returns {string}
      * @memberof CssUtility
      */
-    getColorRgb(rgb: CssRedGreenBlue): string {
+    static getColorRgb(rgb: CssRedGreenBlue | null): string | null {
         if (!rgb) {
             return null;
         }
@@ -45,7 +43,7 @@ export class CssUtility {
      * @returns {number}
      * @memberof CssUtility
      */
-    getOpacity(opacity: string): number {
+    static getOpacity(opacity: string): number {
         return parseInt(opacity, 10) / 100;
     }
 
@@ -56,7 +54,7 @@ export class CssUtility {
      * @returns {string}
      * @memberof CssUtility
      */
-    getPixelValue(pixels: number): string {
+    static getPixelValue(pixels: number): string {
         return `${pixels}px`;
     }
 
@@ -69,10 +67,14 @@ export class CssUtility {
      *
      * @see http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb/5624139?stw=2#5624139
      */
-    getRgbFromHex(hex: string): CssRedGreenBlue {
+    static getRgbFromHex(hex: string | null): CssRedGreenBlue | null {
+        if (!hex) {
+            return null;
+        }
+
         // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
         const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-        hex = hex.replace(shorthandRegex, function(r, g, b) {
+        hex = hex.replace(shorthandRegex, (r, g, b) => {
             return r + r + g + g + b + b;
         });
 
@@ -93,7 +95,7 @@ export class CssUtility {
      * @returns {string}
      * @memberof CssUtility
      */
-    getTintedBackground(data: CssLinearGradientData): string {
+    static getTintedBackground(data: CssLinearGradientData): string | null {
         if (!data) {
             return null;
         }
@@ -112,7 +114,7 @@ export class CssUtility {
      * @returns {string}
      * @memberof CssUtility
      */
-    getUri(uri: string): string {
+    static getUri(uri: string): string {
         return `url('${uri}')`;
     }
 }

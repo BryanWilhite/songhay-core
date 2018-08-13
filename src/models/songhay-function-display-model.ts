@@ -9,7 +9,7 @@ export class FunctionDisplayModel {
      * @type {string}
      * @memberof FunctionDisplayModel
      */
-    description: string;
+    description: string | null = null;
     /**
      * @type {any}
      * @memberof FunctionDisplayModel
@@ -19,5 +19,5 @@ export class FunctionDisplayModel {
      * @type {string}
      * @memberof FunctionDisplayModel
      */
-    memberName: string;
+    memberName: string | null = null;
 }
