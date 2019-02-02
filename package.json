@@ -11,7 +11,10 @@
         "url": "git+https://github.com/BryanWilhite/songhay-core.git"
     },
     "keywords": [],
-    "author": "Bryan D. Wilhite",
+    "author": {
+        "name": "Bryan D. Wilhite",
+        "email": "rasx@songhaysystem.com"
+    },
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/BryanWilhite/songhay-core/issues"
