@@ -9,18 +9,30 @@ module.exports = function(config) {
             require('karma-jasmine'),
             require('karma-chrome-launcher'),
             require('karma-jasmine-html-reporter'),
-            require('karma-coverage-istanbul-reporter')
+            require('karma-coverage-istanbul-reporter'),
+            require('karma-typescript-preprocessor')
         ],
         client: {
             clearContext: false // leave Jasmine Spec Runner output visible in browser
         },
+        files: [
+            '**/*.ts'
+        ],
+        preprocessors: {
+            '**/*.ts': ['typescript']
+        },
+        typescriptPreprocessor: {
+            options: {
+                sourceMap: true, // generate source maps
+                noResolve: false // enforce type resolution
+            },
+            transformPath: function(path) {
+                return path.replace(/\.ts$/, '.js');
+            }
+        },
         coverageIstanbulReporter: {
             reports: ['html', 'lcovonly'],
             fixWebpackSourcePaths: true
-        },
-        files: ['./src/*.ts'],
-        proxies: {
-            '/src/': '/base/src/'
         },
         reporters: ['progress', 'kjhtml'],
         port: 9876,
