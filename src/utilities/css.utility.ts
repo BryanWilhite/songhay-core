@@ -1,5 +1,5 @@
-import { CssLinearGradientData } from '../models/songhay-css-linear-gradient-data';
-import { CssRedGreenBlue } from '../models/songhay-css-red-green-blue';
+import { CssLinearGradientData } from '../models/css-linear-gradient-data';
+import { CssRedGreenBlue } from '../models/css-red-green-blue';
 
 /**
  * routines for inline CSS

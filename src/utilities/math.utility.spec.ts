@@ -1,4 +1,4 @@
-import { MathUtility } from './songhay-math.utility';
+import { MathUtility } from './math.utility';
 
 describe('MathUtility', () => {
     it('should round a number', () => {

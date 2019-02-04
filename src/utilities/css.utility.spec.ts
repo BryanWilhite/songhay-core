@@ -1,6 +1,6 @@
-import { CssLinearGradientData } from '../models/songhay-css-linear-gradient-data';
-import { CssRedGreenBlue } from '../models/songhay-css-red-green-blue';
-import { CssUtility } from './songhay-css.utility';
+import { CssLinearGradientData } from '../models/css-linear-gradient-data';
+import { CssRedGreenBlue } from '../models/css-red-green-blue';
+import { CssUtility } from './css.utility';
 
 describe('CssUtility', () => {
     it('should getColorHex', () => {
