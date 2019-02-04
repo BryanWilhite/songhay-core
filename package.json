@@ -4,7 +4,8 @@
     "description": "core, shared JS module for studio client-side projects",
     "main": "dist/index.js",
     "scripts": {
-        "build": "tsc"
+        "build": "tsc",
+        "test": "node node_modules/karma/bin/karma start ./karma.conf.js"
     },
     "repository": {
         "type": "git",

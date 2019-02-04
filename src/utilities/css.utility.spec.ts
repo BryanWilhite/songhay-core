@@ -2,7 +2,7 @@ import { CssLinearGradientData } from '../models/css-linear-gradient-data';
 import { CssRedGreenBlue } from '../models/css-red-green-blue';
 import { CssUtility } from './css.utility';
 
-describe('CssUtility', () => {
+describe(CssUtility.name, () => {
     it('should getColorHex', () => {
         expect(CssUtility.getColorHex('0xEAEAEA')).toBe('#eaeaea');
     });
