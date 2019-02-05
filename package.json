@@ -3,6 +3,7 @@
     "version": "1.0.1",
     "description": "core, shared JS module for studio client-side projects",
     "main": "dist/index.js",
+    "types": "index.d.ts",
     "scripts": {
         "build": "tsc",
         "test": "node node_modules/karma/bin/karma start ./src/karma.conf.js"
