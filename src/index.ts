@@ -7,7 +7,7 @@ export { Fragment } from './models/fragment';
 export { FunctionDisplayModel } from './models/function-display-model';
 export { Presentation } from './models/presentation';
 export { Segment } from './models/segment';
-export { SyndicationFeed } from './models/syndication-feed ';
+export { SyndicationFeed } from './models/syndication-feed';
 
 /* utilities */
 export { CssUtility } from './utilities/css.utility';
