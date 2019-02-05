@@ -1,6 +1,6 @@
 {
     "name": "songhay-core",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "core, shared JS module for studio client-side projects",
     "main": "dist/index.js",
     "scripts": {
