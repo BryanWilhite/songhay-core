@@ -1,4 +1,4 @@
-import { MapObjectUtility } from './map-object-utility';
+import { MapObjectUtility } from './map-object.utility';
 
 describe(MapObjectUtility.name, () => {
     it('should map an arbitrary object the same string', () => {
