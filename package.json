@@ -6,6 +6,7 @@
     "types": "index.d.ts",
     "scripts": {
         "build": "tsc",
+        "pack": "npm pack",
         "test": "node node_modules/karma/bin/karma start ./src/karma.conf.js"
     },
     "repository": {
