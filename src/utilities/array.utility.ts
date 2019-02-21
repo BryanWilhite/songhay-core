@@ -6,6 +6,32 @@
  */
 export class ArrayUtility {
     /**
+     * returns an array of duplicates
+     *
+     * [https://js-algorithms.tutorialhorizon.com/2016/01/25/find-duplicates-in-an-array/]
+     *
+     * @static
+     * @template T
+     * @param {T[]} data
+     * @returns {T[]}
+     * @memberof ArrayUtility
+     */
+    public static findDuplicates<T>(data: T[]): T[] {
+        const result: T[] = [];
+
+        data.forEach((element, index) => {
+            if (data.indexOf(element, index + 1) === -1) {
+                return;
+            }
+            if (result.indexOf(element) === -1) {
+                result.push(element);
+            }
+        });
+
+        return result;
+    }
+
+    /**
      * sorts any @type {object} by the specified property.
      *
      * [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort]
