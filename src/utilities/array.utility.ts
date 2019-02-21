@@ -32,6 +32,20 @@ export class ArrayUtility {
     }
 
     /**
+     * returns `true` when the specified array is not truthy
+     * or when its length is zero
+     *
+     * @static
+     * @template T
+     * @param {T[]} data
+     * @returns {boolean}
+     * @memberof ArrayUtility
+     */
+    public static isNotTruthyOrIsEmpty<T>(data: T[]): boolean {
+        return !data || !data.length;
+    }
+
+    /**
      * sorts any @type {object} by the specified property.
      *
      * [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort]
@@ -46,7 +60,7 @@ export class ArrayUtility {
     public static sortItems<T extends { [key: string]: any }>(
         items: T[],
         propertyName: string
-    ) {
+    ): T[] {
         if (!items) {
             return items;
         }
