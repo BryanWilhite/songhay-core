@@ -1,6 +1,6 @@
 {
-  "name": "songhay-core",
-  "version": "1.0.3",
+  "name": "songhay",
+  "version": "0.0.1",
   "description": "core, shared JS module for studio client-side projects",
   "main": "core/index.js",
   "types": "core/index.d.ts",
@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "pack": "npm pack @songhay",
+    "pack": "npm pack",
     "test": "jest"
   },
   "repository": {
