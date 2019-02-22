@@ -1,8 +1,9 @@
 {
     "compilerOptions": {
+        "baseUrl": "./",
         "declaration": true,
-        "lib": ["es2017", "dom"],
-        "module": "commonjs",
+        "importHelpers": true,
+        "lib": ["es2018", "dom"],
         "moduleResolution": "node",
         "outDir": "./dist",
         "sourceMap": true,

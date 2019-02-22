@@ -1,44 +1,36 @@
 {
-    "name": "songhay-core",
-    "version": "1.0.1",
-    "description": "core, shared JS module for studio client-side projects",
-    "main": "dist/index.js",
-    "types": "index.d.ts",
-    "scripts": {
-        "build": "tsc",
-        "pack": "npm pack",
-        "test": "node node_modules/karma/bin/karma start ./src/karma.conf.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/BryanWilhite/songhay-core.git"
-    },
-    "keywords": [],
-    "author": {
-        "name": "Bryan D. Wilhite",
-        "email": "rasx@songhaysystem.com"
-    },
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/BryanWilhite/songhay-core/issues"
-    },
-    "homepage": "https://github.com/BryanWilhite/songhay-core#readme",
-    "devDependencies": {
-        "@types/jasmine": "^2.8.8",
-        "@types/jasminewd2": "^2.0.3",
-        "jasmine-core": "^3.2.0",
-        "jasmine-spec-reporter": "^4.2.1",
-        "karma": "^3.0.0",
-        "karma-chrome-launcher": "^2.2.0",
-        "karma-cli": "^1.0.1",
-        "karma-coverage-istanbul-reporter": "^2.0.1",
-        "karma-jasmine": "^1.1.2",
-        "karma-jasmine-html-reporter": "^1.2.0",
-        "karma-typescript-preprocessor": "^0.4.0",
-        "prettier": "^1.14.2",
-        "tslint": "^5.11.0",
-        "tslint-config-prettier": "^1.14.0",
-        "typescript": "^3.0.1"
-    },
-    "dependencies": {}
+  "name": "songhay-core",
+  "version": "1.0.1",
+  "description": "core, shared JS module for studio client-side projects",
+  "main": "dist/index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "pack": "npm pack",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BryanWilhite/songhay-core.git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Bryan D. Wilhite",
+    "email": "rasx@songhaysystem.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BryanWilhite/songhay-core/issues"
+  },
+  "homepage": "https://github.com/BryanWilhite/songhay-core#readme",
+  "devDependencies": {
+    "@types/jest": "^24.0.6",
+    "jest": "^24.1.0",
+    "prettier": "^1.14.2",
+    "ts-jest": "^24.0.0",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.14.0",
+    "typescript": "^3.0.1"
+  },
+  "dependencies": {}
 }
