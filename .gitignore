@@ -1,6 +1,7 @@
 ## Angular CLI gitignore
 
 # compiled output
+/core
 /dist
 /lib
 /tmp
