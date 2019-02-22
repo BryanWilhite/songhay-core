@@ -2,11 +2,11 @@
   "name": "songhay-core",
   "version": "1.0.1",
   "description": "core, shared JS module for studio client-side projects",
-  "main": "dist/index.js",
+  "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
     "build": "tsc",
-    "pack": "npm pack",
+    "pack": "cp package.json ./dist && npm pack ./dist",
     "test": "jest"
   },
   "repository": {
