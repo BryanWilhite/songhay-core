@@ -5,7 +5,7 @@
         "importHelpers": true,
         "lib": ["es2018", "dom"],
         "moduleResolution": "node",
-        "outDir": "./",
+        "outDir": "./core",
         "sourceMap": true,
         "strict": true,
         "target": "es5"
