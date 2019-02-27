@@ -17,6 +17,27 @@ export class MathUtility {
     }
 
     /**
+     * returns `true` when the specified value is numeric
+     * otherwise `false`
+     *
+     * [https://stackoverflow.com/a/50376498/22944]
+     *
+     * @static
+     * @param {(string | number)} value
+     * @returns {boolean}
+     * @memberof YappyCommon
+     */
+    public static isNumeric(value: string | number): boolean {
+        if (value === null) {
+            return false;
+        }
+        if (value === undefined) {
+            return false;
+        }
+        return !isNaN(Number(value.toString()));
+    }
+
+    /**
      * rounds the specified value
      *
      * @param {number} value
