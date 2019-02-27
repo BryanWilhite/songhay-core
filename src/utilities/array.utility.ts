@@ -54,28 +54,40 @@ export class ArrayUtility {
      * @template T
      * @param {T[]} items
      * @param {string} propertyName
+     * @param {boolean} [isNumeric=false]
+     * @param {boolean} [isDescending=false]
      * @returns
      * @memberof ArrayUtility
      */
     public static sortItems<T extends { [key: string]: any }>(
         items: T[],
-        propertyName: string
-    ): T[] {
+        propertyName: string,
+        isNumeric: boolean = false,
+        isDescending: boolean = false
+    ) {
         if (!items) {
             return items;
         }
-        return items.sort((a, b) => {
-            const nameA = a[propertyName].toUpperCase(); // ignore upper and lowercase
-            const nameB = b[propertyName].toUpperCase(); // ignore upper and lowercase
-            if (nameA < nameB) {
-                return -1;
-            }
-            if (nameA > nameB) {
-                return 1;
-            }
+        const sorted = isNumeric
+            ? items.sort((a, b) => +a[propertyName] - +b[propertyName])
+            : items.sort((a, b) => {
+                  const A = a[propertyName].toUpperCase();
+                  const B = b[propertyName].toUpperCase();
+                  if (A < B) {
+                      return -1;
+                  }
+                  if (A > B) {
+                      return 1;
+                  }
 
-            // names must be equal
-            return 0;
-        });
+                  // A must equal B:
+                  return 0;
+              });
+
+        if (isDescending) {
+            return sorted.reverse();
+        }
+
+        return sorted;
     }
 }
