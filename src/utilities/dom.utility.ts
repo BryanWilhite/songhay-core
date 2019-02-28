@@ -62,16 +62,24 @@ export class DomUtility {
      * from the specified heading level
      *
      * @static
-     * @param {number} level
-     * @returns {HTMLHeadingElement}
+     * @param {number} [level=0]
+     * @param {Document} [windowDocument=document]
+     * @returns {(HTMLHeadingElement | null)}
      * @memberof DomUtility
-     * @see https://stackoverflow.com/a/51289849/22944
      */
-    static getHtmlHeadingElement(level: number): HTMLHeadingElement {
+    static getHtmlHeadingElement(
+        level: number = 0,
+        windowDocument: Document = document
+    ): HTMLHeadingElement | null {
+        if (!windowDocument) {
+            return null;
+        }
         const heading =
             0 < level && level < 7
-                ? (document.createElement(`h${level}`) as HTMLHeadingElement)
-                : (document.createElement('h2') as HTMLHeadingElement);
+                ? (windowDocument.createElement(
+                      `h${level}`
+                  ) as HTMLHeadingElement)
+                : (windowDocument.createElement('h2') as HTMLHeadingElement);
         return heading;
     }
 
@@ -84,9 +92,9 @@ export class DomUtility {
      * @returns {CSSStyleDeclaration}
      * @memberof DomUtility
      */
-    static getStyleDeclaration(
-        element: { [index: string]: any }
-    ): CSSStyleDeclaration | null {
+    static getStyleDeclaration(element: {
+        [index: string]: any;
+    }): CSSStyleDeclaration | null {
         if (!element) {
             return null;
         }
@@ -99,5 +107,64 @@ export class DomUtility {
         }
 
         return style;
+    }
+
+    /**
+     * returns an element extending @type {HTMLElement[]}
+     * from the specified markup
+     *
+     * @static
+     * @template TElement
+     * @param {string} markup
+     * @param {string} expectedElementName
+     * @returns {(TElement | null)}
+     * @memberof DomUtility
+     */
+    static parseAsHtmlElement<TElement extends HTMLElement>(
+        markup: string,
+        expectedElementName: string
+    ): TElement | null {
+        if (!markup) {
+            return null;
+        }
+
+        const elements = DomUtility.parseAsHtmlElements(
+            markup,
+            expectedElementName
+        );
+
+        if (!elements.length) {
+            return null;
+        }
+
+        return elements[0] as TElement;
+    }
+
+    /**
+     * returns an array of elements extending @type {HTMLElement[]}
+     * from the specified markup
+     *
+     * @static
+     * @template TElement
+     * @param {string} markup
+     * @param {string} expectedElementName
+     * @returns {TElement[]}
+     * @memberof DomUtility
+     */
+    static parseAsHtmlElements<TElement extends HTMLElement>(
+        markup: string,
+        expectedElementName: string
+    ): TElement[] {
+        if (!markup) {
+            return [];
+        }
+
+        const parser = new DOMParser();
+        const supportedType = 'text/xml';
+        const localDocument = parser.parseFromString(markup, supportedType);
+        const elements = localDocument.getElementsByTagName(
+            expectedElementName
+        );
+        return Array.from(elements).map(e => e as TElement);
     }
 }

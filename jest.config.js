@@ -48,7 +48,7 @@ module.exports = {
   // Make calling deprecated APIs throw helpful error messages
   // errorOnDeprecated: false,
 
-  // Force coverage collection from ignored files usin a array of glob patterns
+  // Force coverage collection from ignored files using a array of glob patterns
   // forceCoverageMatch: [],
 
   // A path to a module which exports an async function that is triggered once before all test suites
@@ -59,6 +59,12 @@ module.exports = {
 
   // A set of global variables that need to be available in all test environments
   // globals: {},
+
+  globals: {
+    'ts-jest': {
+      diagnostics: false
+    }
+  },
 
   // An array of directory names to be searched recursively up from the requiring module's location
   // moduleDirectories: [
@@ -129,7 +135,8 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "node",
+  // testEnvironment: "node",
+  testEnvironment: "jsdom",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
