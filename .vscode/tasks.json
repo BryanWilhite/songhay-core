@@ -25,6 +25,11 @@
             "problemMatcher": [
                 "$tslint5"
             ]
+        },
+        {
+            "type": "npm",
+            "script": "version:patch",
+            "problemMatcher": []
         }
     ]
 }

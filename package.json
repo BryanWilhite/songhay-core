@@ -10,7 +10,8 @@
   "scripts": {
     "build": "tsc",
     "pack": "npm pack",
-    "test": "jest"
+    "test": "jest",
+    "version:patch": "npm version patch -m \":rocket: :snowflake: version patch up to %s\""
   },
   "repository": {
     "type": "git",
