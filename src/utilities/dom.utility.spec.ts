@@ -22,14 +22,11 @@ test('should get h2 element', () => {
     expect(element.localName).toEqual('h2');
 });
 
-xtest('should get style declaration', () => {});
-
 test('should parse into HTML element', () => {
     const elementName = 'div';
     const caption = 'click me';
     const div = DomUtility.parseAsHtmlElement<HTMLDivElement>(
-        `<div><a href="#">${caption}</a></div>`,
-        elementName
+        `<div><a href="#">${caption}</a></div>`
     );
     expect(div).toBeTruthy();
     expect(div.localName).toEqual(elementName);

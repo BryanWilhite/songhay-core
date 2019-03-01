@@ -9,21 +9,49 @@ export class ObjectUtility {
      * mutates object properties to lowercase
      *
      * @static
-     * @param {{}} o
+     * @param {{ [index: string]: any }} o
      * @param {number} [charIndex=0]
-     * @returns {{}}
+     * @returns {{ [index: string]: any }}
      * @memberof ObjectUtility
      */
-    static lowerCasePropertyChar(o: {}, charIndex: number = 0): {} {
+    static lowerCasePropertyChar(
+        o: { [index: string]: any },
+        charIndex: number = 0
+    ): { [index: string]: any } {
         if (!o) {
             return o;
         }
+
         const lowerCase = (s: string) => {
-            return `${s.charAt(charIndex)}${s.slice(charIndex + 1)}`;
+            return `${s.charAt(charIndex).toLowerCase()}${s.slice(
+                charIndex + 1
+            )}`;
         };
 
-        Object.keys(o).forEach(lowerCase);
+        Object.keys(o).forEach(k => {
+            o = ObjectUtility.renameProperty(k, lowerCase(k), o);
+        });
 
         return o;
+    }
+
+    /**
+     * renames a property of an object
+     *
+     * [https://medium.com/front-end-weekly/immutably-rename-object-keys-in-javascript-5f6353c7b6dd]
+     *
+     * @static
+     * @param {string} oldProperty
+     * @param {string} newProperty
+     * @param {*} { [oldProperty]: old, ...others }
+     * @returns {{ [index: string]: any }}
+     * @memberof ObjectUtility
+     */
+    static renameProperty(
+        oldProperty: string,
+        newProperty: string,
+        { [oldProperty]: old, ...others }
+    ): { [index: string]: any } {
+        return { [newProperty]: old, ...others };
     }
 }

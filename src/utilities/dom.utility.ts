@@ -116,13 +116,13 @@ export class DomUtility {
      * @static
      * @template TElement
      * @param {string} markup
-     * @param {string} expectedElementName
+     * @param {string} [expectedElementName='div']
      * @returns {(TElement | null)}
      * @memberof DomUtility
      */
     static parseAsHtmlElement<TElement extends HTMLElement>(
         markup: string,
-        expectedElementName: string
+        expectedElementName: string = 'div'
     ): TElement | null {
         if (!markup) {
             return null;
