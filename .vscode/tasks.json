@@ -2,34 +2,85 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "type": "typescript",
-            "tsconfig": "tsconfig.json",
-            "problemMatcher": [
-                "$tsc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
             "type": "npm",
             "script": "build",
-            "problemMatcher": [
-                "$tslint5"
-            ]
+            "problemMatcher": ["$tslint5"]
         },
         {
             "type": "npm",
             "script": "pack",
-            "problemMatcher": [
-                "$tslint5"
-            ]
+            "problemMatcher": ["$tslint5"]
+        },
+        {
+            "type": "npm",
+            "script": "typedoc",
+            "problemMatcher": ["$tslint5"]
+        },
+        {
+            "type": "npm",
+            "script": "version:major",
+            "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "version:minor",
+            "problemMatcher": []
         },
         {
             "type": "npm",
             "script": "version:patch",
             "problemMatcher": []
+        },
+        {
+            "label": "typedoc: generate docs",
+            "type": "shell",
+            "command": "typedoc",
+            "args": [
+                "--exclude",
+                "'**/*.spec.ts'",
+                "--mode",
+                "modules",
+                "--module",
+                "commonjs",
+                "--out",
+                "./docs",
+                "./src"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "typedoc: add .nojekyll file for GutHub",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/docs"
+            },
+            "linux": {
+                "command": "touch",
+                "args": [
+                    ".nojekyll"
+                ]
+            },
+            "windows": {
+                "command": "New-Item",
+                "args": [
+                    "-ItemType",
+                    "file",
+                    ".nojekyll"
+                ]
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "typescript",
+            "tsconfig": "tsconfig.json",
+            "problemMatcher": ["$tsc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
