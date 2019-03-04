@@ -24,7 +24,7 @@
         "name": "Bryan D. Wilhite",
         "email": "rasx@songhaysystem.com"
     },
-    "license": "ISC",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/BryanWilhite/songhay-core/issues"
     },
