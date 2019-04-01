@@ -10,6 +10,7 @@
     "scripts": {
         "build": "tsc",
         "pack": "npm pack",
+        "release": "npm test && npm run build && npm run pack && npm publish",
         "test": "jest",
         "version:major": "npm version major -m \":rocket: :snowflake: version major up to %s\"",
         "version:minor": "npm version minor -m \":rocket: :snowflake: version minor up to %s\"",

@@ -13,7 +13,7 @@
         },
         {
             "type": "npm",
-            "script": "typedoc",
+            "script": "release",
             "problemMatcher": ["$tslint5"]
         },
         {
