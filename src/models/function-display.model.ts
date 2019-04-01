@@ -2,22 +2,21 @@
  * Defines the view model of a function
  *
  * @export
- * @class FunctionDisplayModel
  */
 export class FunctionDisplayModel {
+
     /**
-     * @type {string}
-     * @memberof FunctionDisplayModel
+     * description for display
      */
     description: string | null = null;
+
     /**
-     * @type {any}
-     * @memberof FunctionDisplayModel
+     * input
      */
     input: any;
+
     /**
-     * @type {string}
-     * @memberof FunctionDisplayModel
+     * member name
      */
     memberName: string | null = null;
 }
