@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ObjectUtility | songhay</title>
+	<title>Selectable | songhay</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_utilities_object_utility_.html">&quot;utilities/object.utility&quot;</a>
+					<a href="../modules/_models_selectable_.html">&quot;models/selectable&quot;</a>
 				</li>
 				<li>
-					<a href="_utilities_object_utility_.objectutility.html">ObjectUtility</a>
+					<a href="_models_selectable_.selectable.html">Selectable</a>
 				</li>
 			</ul>
-			<h1>Class ObjectUtility</h1>
+			<h1>Interface Selectable</h1>
 		</div>
 	</div>
 </header>
@@ -72,14 +72,11 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>static members for @type {Object}</p>
+						<p>Defines a selectable visual.</p>
 					</div>
 					<dl class="tsd-comment-tags">
 						<dt>export</dt>
 						<dd></dd>
-						<dt>class</dt>
-						<dd><p>ObjectUtility</p>
-						</dd>
 					</dl>
 				</div>
 			</section>
@@ -87,7 +84,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ObjectUtility</span>
+						<span class="target">Selectable</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<a href="_models_menu_display_item_model_.menudisplayitemmodel.html" class="tsd-signature-type">MenuDisplayItemModel</a>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -96,119 +98,62 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Methods</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_utilities_object_utility_.objectutility.html#lowercasepropertychar" class="tsd-kind-icon">lower<wbr>Case<wbr>Property<wbr>Char</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_utilities_object_utility_.objectutility.html#renameproperty" class="tsd-kind-icon">rename<wbr>Property</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_models_selectable_.selectable.html#isdefaultselection" class="tsd-kind-icon">is<wbr>Default<wbr>Selection</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_models_selectable_.selectable.html#isenabled" class="tsd-kind-icon">is<wbr>Enabled</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_models_selectable_.selectable.html#isselected" class="tsd-kind-icon">is<wbr>Selected</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="lowercasepropertychar" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> lower<wbr>Case<wbr>Property<wbr>Char</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">lower<wbr>Case<wbr>Property<wbr>Char<span class="tsd-signature-symbol">(</span>o<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span>, charIndex<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/BryanWilhite/songhay-core/blob/fc049db/src/utilities/object.utility.ts#L17">utilities/object.utility.ts:17</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>mutates object properties to lowercase</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>static</dt>
-									<dd></dd>
-									<dt>memberof</dt>
-									<dd><p>ObjectUtility</p>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>o: <span class="tsd-signature-type">object</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-index-signature">
-											<h5><span class="tsd-signature-symbol">[</span>index: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></h5>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> charIndex: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-index-signature">
-									<h5><span class="tsd-signature-symbol">[</span>index: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
-						</li>
-					</ul>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="isdefaultselection" class="tsd-anchor"></a>
+					<h3>is<wbr>Default<wbr>Selection</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Default<wbr>Selection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/BryanWilhite/songhay-core/blob/fc049db/src/models/selectable.ts#L9">models/selectable.ts:9</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Gets or sets whether this is default selection.</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="renameproperty" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> rename<wbr>Property</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">rename<wbr>Property<span class="tsd-signature-symbol">(</span>oldProperty<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, newProperty<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, __namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/BryanWilhite/songhay-core/blob/fc049db/src/utilities/object.utility.ts#L50">utilities/object.utility.ts:50</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>renames a property of an object</p>
-								</div>
-								<p>[<a href="https://medium.com/front-end-weekly/immutably-rename-object-keys-in-javascript-5f6353c7b6dd%5D">https://medium.com/front-end-weekly/immutably-rename-object-keys-in-javascript-5f6353c7b6dd]</a></p>
-								<dl class="tsd-comment-tags">
-									<dt>static</dt>
-									<dd></dd>
-									<dt>memberof</dt>
-									<dd><p>ObjectUtility</p>
-									</dd>
-								</dl>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>oldProperty: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>newProperty: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>__namedParameters: <span class="tsd-signature-type">object</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter">
-											<h5>old<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
-										</li>
-										<li class="tsd-parameter">
-											<h5>others<span class="tsd-signature-symbol">: </span><a href="" class="tsd-signature-type">others</a></h5>
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-index-signature">
-									<h5><span class="tsd-signature-symbol">[</span>index: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
-						</li>
-					</ul>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="isenabled" class="tsd-anchor"></a>
+					<h3>is<wbr>Enabled</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Enabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/BryanWilhite/songhay-core/blob/fc049db/src/models/selectable.ts#L13">models/selectable.ts:13</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Gets or sets whether this is enabled.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="isselected" class="tsd-anchor"></a>
+					<h3>is<wbr>Selected</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Selected<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/BryanWilhite/songhay-core/blob/fc049db/src/models/selectable.ts#L17">models/selectable.ts:17</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Gets or sets whether this is selected.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -260,7 +205,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_models_segment_.html">"models/segment"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_models_selectable_.html">"models/selectable"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -284,7 +229,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_utilities_math_utility_.html">"utilities/math.utility"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_utilities_object_utility_.html">"utilities/object.utility"</a>
 					</li>
 				</ul>
@@ -293,14 +238,17 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_utilities_object_utility_.objectutility.html" class="tsd-kind-icon">Object<wbr>Utility</a>
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_models_selectable_.selectable.html" class="tsd-kind-icon">Selectable</a>
 						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="_utilities_object_utility_.objectutility.html#lowercasepropertychar" class="tsd-kind-icon">lower<wbr>Case<wbr>Property<wbr>Char</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_models_selectable_.selectable.html#isdefaultselection" class="tsd-kind-icon">is<wbr>Default<wbr>Selection</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="_utilities_object_utility_.objectutility.html#renameproperty" class="tsd-kind-icon">rename<wbr>Property</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_models_selectable_.selectable.html#isenabled" class="tsd-kind-icon">is<wbr>Enabled</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_models_selectable_.selectable.html#isselected" class="tsd-kind-icon">is<wbr>Selected</a>
 							</li>
 						</ul>
 					</li>
