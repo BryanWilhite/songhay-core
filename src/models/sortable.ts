@@ -14,7 +14,7 @@ export interface Sortable {
      * Gets or sets the sort ordinal.
      * @value  The sort ordinal.
      */
-    sortOrdinal: number;
+    sortOrdinal: number | string;
 
     /**
      * Gets or sets the tag.
