@@ -20,7 +20,7 @@ export interface DisplayItemModel extends Sortable {
      * Gets or sets the id.
      * @value  The id.
      */
-    id: number;
+    id: number | string;
 
     /**
      * Gets or sets the item name.
