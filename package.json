@@ -4,6 +4,9 @@
     "description": "core, shared JS module for studio client-side projects",
     "main": "core/index.js",
     "types": "core/index.d.ts",
+    "directories": {
+        "lib": "./core"
+    },
     "files": [
         "core/*"
     ],
