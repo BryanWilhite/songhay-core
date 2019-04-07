@@ -1,6 +1,6 @@
 {
     "name": "songhay",
-    "version": "0.0.6",
+    "version": "0.1.0",
     "description": "core, shared JS module for studio client-side projects",
     "main": "core/index.js",
     "types": "core/index.d.ts",
