@@ -1,4 +1,5 @@
 import { ColorDisplayItemModel } from './color-display-item.model';
+import { Groupable } from './groupable';
 import { Selectable } from './selectable';
 
 /**
@@ -6,7 +7,7 @@ import { Selectable } from './selectable';
  *
  * @export
  */
-export interface MenuDisplayItemModel extends ColorDisplayItemModel, Selectable {
+export interface MenuDisplayItemModel extends ColorDisplayItemModel, Groupable, Selectable {
     /**
      * Gets or sets the child items.
      */

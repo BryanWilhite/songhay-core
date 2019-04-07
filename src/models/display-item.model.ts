@@ -5,33 +5,42 @@ import { Sortable } from './sortable';
  */
 export interface DisplayItemModel extends Sortable {
     /**
+     * origin data of the item.
+     */
+    endDate: Date;
+
+    /**
      * Gets or sets the description.
-     * @value  The description.
      */
     description: string;
 
     /**
      * Gets or sets the display text.
-     * @value  The display text.
      */
     displayText: string;
 
     /**
      * Gets or sets the id.
-     * @value  The id.
      */
     id: number | string;
 
     /**
+     * origin data of the item.
+     */
+    inceptDate: Date;
+
+    /**
      * Gets or sets the item name.
-     * @value  The item name.
      */
     itemName: string;
 
     /**
+     * origin data of the item.
+     */
+    modificationDate: Date;
+
+    /**
      * Gets or sets the resource indicator.
-     * @value
-     * The resource indicator.
      */
     resourceIndicator: string;
 }
