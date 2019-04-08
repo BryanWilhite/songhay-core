@@ -2,13 +2,10 @@
  * shared math routines
  *
  * @export
- * @class MathUtility
  */
 export class MathUtility {
     /**
      * gets a random integer between min (inclusive) and max (inclusive)
-     *
-     * @memberof MathUtility
      *
      * @see https://stackoverflow.com/a/1527820/22944
      */
@@ -21,11 +18,6 @@ export class MathUtility {
      * otherwise `false`
      *
      * [https://stackoverflow.com/a/50376498/22944]
-     *
-     * @static
-     * @param {(string | number)} value
-     * @returns {boolean}
-     * @memberof YappyCommon
      */
     public static isNumeric(value: string | number): boolean {
         if (value === null) {
@@ -39,11 +31,6 @@ export class MathUtility {
 
     /**
      * rounds the specified value
-     *
-     * @param {number} value
-     * @param {number} decimals
-     * @returns {number}
-     * @memberof MathUtility
      *
      * @see http://www.jacklmoore.com/notes/rounding-in-javascript/
      */

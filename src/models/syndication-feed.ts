@@ -2,35 +2,25 @@
  * defines a common Syndication Feed model
  *
  * @export
- * @class SyndicationFeed
  */
 export class SyndicationFeed {
     /**
      * syndication feed image
-     *
-     * @type {string}
-     * @memberof SyndicationFeed
      */
     feedImage: string | null;
 
     /**
      * syndication feed items
-     *
-     * @type {string}
-     * @memberof SyndicationFeed
      */
     feedItems: Array<{ title: string; link: string }>;
 
     /**
      * syndication feed title
-     *
-     * @type {string}
-     * @memberof SyndicationFeed
      */
     feedTitle: string | null;
 
     /**
-     *
+     * Creates an instance of @type {SyndicationFeed}.
      */
     constructor() {
         this.feedImage = null;
@@ -40,11 +30,6 @@ export class SyndicationFeed {
 
     /**
      * gets Atom channel title from conventional JSON
-     *
-     * @static
-     * @param {*} rawFeed
-     * @returns {string}
-     * @memberof SyndicationFeed
      */
     static getAtomChannelTitle(rawFeed: any): string | null {
         const atomFeed: any = rawFeed['feed'];
@@ -59,14 +44,9 @@ export class SyndicationFeed {
 
     /**
      * gets Atom channel items from conventional JSON
-     *
-     * @static
-     * @param {*} rawFeed
-     * @returns {{}[]}
-     * @memberof SyndicationFeed
      */
-    static getAtomChannelItems(rawFeed: any): {}[] {
-        const channelItems: {}[] = rawFeed['feed']['entry'];
+    static getAtomChannelItems(rawFeed: any): Array<{ [key: string]: any; }> {
+        const channelItems: Array<{ [key: string]: any; }> = rawFeed['feed']['entry'];
         if (!channelItems) {
             console.log('the expected feed root is not here');
             return [];
@@ -80,14 +60,9 @@ export class SyndicationFeed {
 
     /**
      * gets RSS channel items from conventional JSON
-     *
-     * @static
-     * @param {*} rawFeed
-     * @returns {{}[]}
-     * @memberof SyndicationFeed
      */
-    static getRssChannelItems(rawFeed: any): {}[] {
-        const channelItems: {}[] = rawFeed['rss']['channel']['item'];
+    static getRssChannelItems(rawFeed: any): Array<{ [key: string]: any; }> {
+        const channelItems: Array<{ [key: string]: any; }> = rawFeed['rss']['channel']['item'];
         if (!channelItems) {
             console.log('the expected RSS channel root is not here');
             return [];
@@ -101,11 +76,6 @@ export class SyndicationFeed {
 
     /**
      * gets RSS channel title from conventional JSON
-     *
-     * @static
-     * @param {*} rawFeed
-     * @returns {string}
-     * @memberof SyndicationFeed
      */
     static getRssChannelTitle(rawFeed: any): string | null {
         const channel: any = rawFeed['rss']['channel'];

@@ -8,7 +8,7 @@ export class FunctionDisplayModel {
     /**
      * description for display
      */
-    description: string | null = null;
+    description?: string | null = null;
 
     /**
      * input

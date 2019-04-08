@@ -7,10 +7,10 @@ export interface Groupable {
     /**
      * display text of the group
      */
-    groupDisplayText: string;
+    groupDisplayText?: string;
 
     /**
      * identifer of the group
      */
-    groupId: string | number;
+    groupId?: string | number;
 }

@@ -7,12 +7,12 @@ export interface DisplayItemModel extends Sortable {
     /**
      * origin data of the item.
      */
-    endDate: Date;
+    endDate?: Date;
 
     /**
      * Gets or sets the description.
      */
-    description: string;
+    description?: string;
 
     /**
      * Gets or sets the display text.
@@ -27,20 +27,20 @@ export interface DisplayItemModel extends Sortable {
     /**
      * origin data of the item.
      */
-    inceptDate: Date;
+    inceptDate?: Date;
 
     /**
      * Gets or sets the item name.
      */
-    itemName: string;
+    itemName?: string;
 
     /**
      * origin data of the item.
      */
-    modificationDate: Date;
+    modificationDate?: Date;
 
     /**
      * Gets or sets the resource indicator.
      */
-    resourceIndicator: string;
+    resourceIndicator?: string;
 }

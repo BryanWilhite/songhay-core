@@ -2,19 +2,12 @@
  * static members for DOM manipulation
  *
  * @export
- * @class DomUtility
  */
 export class DomUtility {
     /**
      * gets the element, extending @type {HTMLElement}
      * from the specified @type {ElementRef},
      * usually derived from @ViewChild
-     *
-     * @static
-     * @template TElement
-     * @param {{[index:string]: any}} elementRef
-     * @returns {TElement}
-     * @memberof DomUtility
      */
     static getHtmlElement<TElement extends HTMLElement>(elementRef: {
         [index: string]: any;
@@ -33,11 +26,6 @@ export class DomUtility {
     /**
      * get an array of @type {Element}
      * from the specified collection
-     *
-     * @static
-     * @param {HTMLCollection} collection
-     * @returns {Element[]}
-     * @memberof DomUtility
      */
     static getHtmlElements(collection: HTMLCollection): Element[] {
         const children = Array.from(collection);
@@ -60,12 +48,6 @@ export class DomUtility {
     /**
      * gets the @type {HTMLHeadingElement}
      * from the specified heading level
-     *
-     * @static
-     * @param {number} [level=0]
-     * @param {Document} [windowDocument=document]
-     * @returns {(HTMLHeadingElement | null)}
-     * @memberof DomUtility
      */
     static getHtmlHeadingElement(
         level: number = 0,
@@ -86,11 +68,6 @@ export class DomUtility {
     /**
      * gets the @type {CSSStyleDeclaration}
      * from the specified @type {Element}
-     *
-     * @static
-     * @param {{ [index: string]: any }} element
-     * @returns {CSSStyleDeclaration}
-     * @memberof DomUtility
      */
     static getStyleDeclaration(element: {
         [index: string]: any;
@@ -112,13 +89,6 @@ export class DomUtility {
     /**
      * returns an element extending @type {HTMLElement[]}
      * from the specified markup
-     *
-     * @static
-     * @template TElement
-     * @param {string} markup
-     * @param {string} [expectedElementName='div']
-     * @returns {(TElement | null)}
-     * @memberof DomUtility
      */
     static parseAsHtmlElement<TElement extends HTMLElement>(
         markup: string,
@@ -143,13 +113,6 @@ export class DomUtility {
     /**
      * returns an array of elements extending @type {HTMLElement[]}
      * from the specified markup
-     *
-     * @static
-     * @template TElement
-     * @param {string} markup
-     * @param {string} expectedElementName
-     * @returns {TElement[]}
-     * @memberof DomUtility
      */
     static parseAsHtmlElements<TElement extends HTMLElement>(
         markup: string,

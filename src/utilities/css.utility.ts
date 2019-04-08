@@ -5,15 +5,10 @@ import { CssRedGreenBlue } from '../models/css-red-green-blue';
  * routines for inline CSS
  *
  * @export
- * @class CssUtility
  */
 export class CssUtility {
     /**
      * gets #ffffff format from 0xFFFFFF format
-     *
-     * @param {string} color
-     * @returns {string}
-     * @memberof CssUtility
      */
     static getColorHex(color: string): string | null {
         if (!color) {
@@ -24,10 +19,6 @@ export class CssUtility {
 
     /**
      * gets r, g, b format from @type {CssRedGreenBlue} data
-     *
-     * @param {CssRedGreenBlue} rgb
-     * @returns {string}
-     * @memberof CssUtility
      */
     static getColorRgb(rgb: CssRedGreenBlue | null): string | null {
         if (!rgb) {
@@ -38,10 +29,6 @@ export class CssUtility {
 
     /**
      * gets opacity 0.70 format from "70" format
-     *
-     * @param {string} opacity
-     * @returns {number}
-     * @memberof CssUtility
      */
     static getOpacity(opacity: string): number {
         return parseInt(opacity, 10) / 100;
@@ -49,10 +36,6 @@ export class CssUtility {
 
     /**
      * gets 70px pixel format from number 70
-     *
-     * @param {number} pixels
-     * @returns {string}
-     * @memberof CssUtility
      */
     static getPixelValue(pixels: number): string {
         return `${pixels}px`;
@@ -60,10 +43,6 @@ export class CssUtility {
 
     /**
      * gets @type {CssRedGreenBlue} data from #ffffff (or #fff) format
-     *
-     * @param {string} hex
-     * @returns {CssRedGreenBlue}
-     * @memberof CssUtility
      *
      * @see http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb/5624139?stw=2#5624139
      */
@@ -90,10 +69,6 @@ export class CssUtility {
 
     /**
      * get linear-gradient CSS from @type {CssLinearGradientData} data
-     *
-     * @param {CssLinearGradientData} data
-     * @returns {string}
-     * @memberof CssUtility
      */
     static getTintedBackground(data: CssLinearGradientData): string | null {
         if (!data) {
@@ -109,10 +84,6 @@ export class CssUtility {
 
     /**
      * get url CSS from the URI
-     *
-     * @param {string} uri
-     * @returns {string}
-     * @memberof CssUtility
      */
     static getUri(uri: string): string {
         return `url('${uri}')`;

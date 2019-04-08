@@ -2,17 +2,10 @@
  * static members for @type {Object}
  *
  * @export
- * @class ObjectUtility
  */
 export class ObjectUtility {
     /**
      * mutates object properties to lowercase
-     *
-     * @static
-     * @param {{ [index: string]: any }} o
-     * @param {number} [charIndex=0]
-     * @returns {{ [index: string]: any }}
-     * @memberof ObjectUtility
      */
     static lowerCasePropertyChar(
         o: { [index: string]: any },
@@ -39,13 +32,6 @@ export class ObjectUtility {
      * renames a property of an object
      *
      * [https://medium.com/front-end-weekly/immutably-rename-object-keys-in-javascript-5f6353c7b6dd]
-     *
-     * @static
-     * @param {string} oldProperty
-     * @param {string} newProperty
-     * @param {*} { [oldProperty]: old, ...others }
-     * @returns {{ [index: string]: any }}
-     * @memberof ObjectUtility
      */
     static renameProperty(
         oldProperty: string,

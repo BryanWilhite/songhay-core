@@ -2,19 +2,12 @@
  * static members for @type {Array}
  *
  * @export
- * @class ArrayUtility
  */
 export class ArrayUtility {
     /**
      * returns an array of duplicates
      *
      * [https://js-algorithms.tutorialhorizon.com/2016/01/25/find-duplicates-in-an-array/]
-     *
-     * @static
-     * @template T
-     * @param {T[]} data
-     * @returns {T[]}
-     * @memberof ArrayUtility
      */
     public static findDuplicates<T>(data: T[]): T[] {
         const result: T[] = [];
@@ -34,12 +27,6 @@ export class ArrayUtility {
     /**
      * returns `true` when the specified array is not truthy
      * or when its length is zero
-     *
-     * @static
-     * @template T
-     * @param {T[]} data
-     * @returns {boolean}
-     * @memberof ArrayUtility
      */
     public static isNotTruthyOrIsEmpty<T>(data: T[]): boolean {
         return !data || !data.length;
@@ -49,15 +36,6 @@ export class ArrayUtility {
      * sorts any @type {object} by the specified property.
      *
      * [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort]
-     *
-     * @static
-     * @template T
-     * @param {T[]} items
-     * @param {string} propertyName
-     * @param {boolean} [isNumeric=false]
-     * @param {boolean} [isDescending=false]
-     * @returns
-     * @memberof ArrayUtility
      */
     public static sortItems<T extends { [key: string]: any }>(
         items: T[],

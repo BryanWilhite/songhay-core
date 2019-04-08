@@ -11,5 +11,5 @@ export interface MenuDisplayItemModel extends ColorDisplayItemModel, Groupable, 
     /**
      * Gets or sets the child items.
      */
-    childItems: MenuDisplayItemModel[];
+    childItems?: MenuDisplayItemModel[];
 }
