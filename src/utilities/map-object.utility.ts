@@ -9,17 +9,36 @@ export class MapObjectUtility {
      */
     static getMap<TValue>(
         o: { [index: string]: any },
-        valueGetter: (propertyName: string, propertyValue: any) => TValue
+        valueGetter?: (propertyName: string, propertyValue: TValue) => TValue
     ): Map<string, TValue> | null {
         if (!o) {
             console.log('object to be mapped is not truthy');
             return null;
         }
         const iterable = Object.keys(o).map(propertyName => {
-            const propertyValue = o[propertyName];
-            const value = valueGetter(propertyName, propertyValue);
+            const propertyValue = o[propertyName] as TValue;
+            const value = valueGetter ? valueGetter(propertyName, propertyValue) : propertyValue;
             return [propertyName, value] as [string, TValue];
         });
         return new Map<string, TValue>(iterable);
     }
+
+    /**
+     * gets @type {Map<string, TValue>} from an object
+     * of @type {Array<{ key: string; value: any }>}
+     *
+     * @remarks https://stackoverflow.com/a/26265095/22944
+     */
+    static getMapFromKeyValuePairs<TValue>(
+        pairs: Array<{ key: string; value: any }>,
+        valueGetter?: (propertyName: string, propertyValue: TValue) => TValue
+    ): Map<string, TValue> | null {
+        const initialValue: { [index: string]: any } = {};
+        const o = pairs.reduce((a, i) => {
+            a[i.key] = i.value;
+            return a;
+        }, initialValue);
+        return MapObjectUtility.getMap(o, valueGetter);
+    }
+
 }
