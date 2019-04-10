@@ -33,7 +33,7 @@ export class MapObjectUtility {
         pairs: Array<{ key: string; value: any }>,
         valueGetter?: (propertyName: string, propertyValue: TValue) => TValue
     ): Map<string, TValue> | null {
-        const initialValue: { [index: string]: any } = {};
+        const initialValue: { [index: string]: TValue } = {};
         const o = pairs.reduce((a, i) => {
             a[i.key] = i.value;
             return a;
