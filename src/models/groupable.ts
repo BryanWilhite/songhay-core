@@ -13,4 +13,9 @@ export interface Groupable {
      * identifer of the group
      */
     groupId?: string | number;
+
+    /**
+     * returns `true` when group is visually collapsed
+     */
+    isCollapsed?: boolean;
 }
