@@ -11,10 +11,10 @@ export class DisplayItemUtility {
      * return the data to display a flat list of items
      * as nested groups
      */
-    public static displayInGroups(items: MenuDisplayItemModel[], groupId?: string | number, sortAscending = false): MenuDisplayItemModel[] {
+    public static displayInGroups(items: MenuDisplayItemModel[], groupId?: string | number, sortDescending = false): MenuDisplayItemModel[] {
         DisplayItemUtility.setGrouping(items, groupId);
         const groups = DisplayItemUtility.group(items, groupId);
-        return DisplayItemUtility.nestIntoGroups(groups, sortAscending);
+        return DisplayItemUtility.nestIntoGroups(groups, sortDescending);
     }
 
     /**
@@ -36,7 +36,7 @@ export class DisplayItemUtility {
      * nests the groups from `DisplayItemUtility.group`
      * for menu display; the groups are sorted by `groupId`
      */
-    public static nestIntoGroups(groups: { [key: string]: MenuDisplayItemModel[] }, sortAscending = false): MenuDisplayItemModel[] {
+    public static nestIntoGroups(groups: { [key: string]: MenuDisplayItemModel[] }, sortDescending = false): MenuDisplayItemModel[] {
         if (!groups) {
             throw new Error('The expected groups are not here.');
         }
@@ -46,7 +46,7 @@ export class DisplayItemUtility {
             return reverse ? sorted.reverse() : sorted;
         };
 
-        const nested = sort(Object.keys(groups), sortAscending)
+        const nested = sort(Object.keys(groups), sortDescending)
             .map(i => {
                 const group = groups[i] as MenuDisplayItemModel[];
                 if (!group.length) {
