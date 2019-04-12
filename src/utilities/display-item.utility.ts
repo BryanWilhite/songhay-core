@@ -81,7 +81,7 @@ export class DisplayItemUtility {
 
         const getFirstPair = (item: MenuDisplayItemModel) => {
             if (!item.map || !item.map.size) {
-                throw new Error('The expected selectable map is not here.');
+                return null;
             }
             const first = Array.from(item.map.entries())[0];
             const id = first[0];
@@ -96,7 +96,7 @@ export class DisplayItemUtility {
 
         const getPairWithId = (item: MenuDisplayItemModel, id: string | number) => {
             if (!item.map || !item.map.size) {
-                throw new Error('The expected selectable map is not here.');
+                return null;
             }
             if (!item.map.has(id)) {
                 id = Array.from(item.map.keys())
@@ -114,12 +114,24 @@ export class DisplayItemUtility {
         if (groupId) {
             items.forEach(i => {
                 const pair = getPairWithId(i, groupId);
+                if (!pair) {
+                    if (!i.groupId || !i.displayText) {
+                        throw new Error('The expected Selectable map pair and/or groupId/displayText is not here.');
+                    }
+                    return;
+                }
                 i.groupId = pair.id;
                 i.displayText = pair.groupDisplayText;
             });
         } else {
             items.forEach(i => {
                 const pair = getFirstPair(i);
+                if (!pair) {
+                    if (!i.groupId || !i.displayText) {
+                        throw new Error('The expected Selectable map pair and/or groupId/displayText is not here.');
+                    }
+                    return;
+                }
                 i.groupId = pair.id;
                 i.displayText = pair.groupDisplayText;
             });
