@@ -11,10 +11,10 @@ export class DisplayItemUtility {
      * return the data to display a flat list of items
      * as nested groups
      */
-    public static displayInGroups(items: MenuDisplayItemModel[], groupId?: string | number): MenuDisplayItemModel[] {
+    public static displayInGroups(items: MenuDisplayItemModel[], groupId?: string | number, sortAscending = false): MenuDisplayItemModel[] {
         DisplayItemUtility.setGrouping(items, groupId);
         const groups = DisplayItemUtility.group(items, groupId);
-        return DisplayItemUtility.nestIntoGroups(groups);
+        return DisplayItemUtility.nestIntoGroups(groups, sortAscending);
     }
 
     /**
@@ -34,34 +34,40 @@ export class DisplayItemUtility {
 
     /**
      * nests the groups from `DisplayItemUtility.group`
-     * for menu display
+     * for menu display; the groups are sorted by `groupId`
      */
-    public static nestIntoGroups(groups: { [key: string]: MenuDisplayItemModel[] }): MenuDisplayItemModel[] {
+    public static nestIntoGroups(groups: { [key: string]: MenuDisplayItemModel[] }, sortAscending = false): MenuDisplayItemModel[] {
         if (!groups) {
             throw new Error('The expected groups are not here.');
         }
 
-        const nested = Object.keys(groups).map(i => {
-            const group = groups[i] as MenuDisplayItemModel[];
-            if (!group.length) {
-                throw new Error('The expected grouping data format is not here.');
-            }
+        const sort = (keys: string[], reverse: boolean) => {
+            const sorted = keys.sort();
+            return reverse ? sorted.reverse() : sorted;
+        };
 
-            const first = group[0];
-            if (!first.groupId) {
-                throw new Error('The expected grouping identifier is not here.');
-            }
-            if (!first.displayText) {
-                throw new Error('The expected grouping display text is not here.');
-            }
+        const nested = sort(Object.keys(groups), sortAscending)
+            .map(i => {
+                const group = groups[i] as MenuDisplayItemModel[];
+                if (!group.length) {
+                    throw new Error('The expected grouping data format is not here.');
+                }
 
-            const menu: MenuDisplayItemModel = {
-                id: first.groupId,
-                displayText: first.groupDisplayText || '',
-                childItems: groups[i]
-            };
-            return menu;
-        });
+                const first = group[0];
+                if (!first.groupId) {
+                    throw new Error('The expected grouping identifier is not here.');
+                }
+                if (!first.displayText) {
+                    throw new Error('The expected grouping display text is not here.');
+                }
+
+                const menu: MenuDisplayItemModel = {
+                    id: first.groupId,
+                    displayText: first.groupDisplayText || '',
+                    childItems: groups[i]
+                };
+                return menu;
+            });
 
         return nested;
     }
