@@ -121,7 +121,7 @@ export class DisplayItemUtility {
                     return;
                 }
                 i.groupId = pair.id;
-                i.displayText = pair.groupDisplayText;
+                i.groupDisplayText = pair.groupDisplayText;
             });
         } else {
             items.forEach(i => {
@@ -133,7 +133,7 @@ export class DisplayItemUtility {
                     return;
                 }
                 i.groupId = pair.id;
-                i.displayText = pair.groupDisplayText;
+                i.groupDisplayText = pair.groupDisplayText;
             });
         }
     }
