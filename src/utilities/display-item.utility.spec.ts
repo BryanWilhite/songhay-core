@@ -48,7 +48,7 @@ test('should group flat set for display [Selectable map pairs]', () => {
     expect(grouped.find(i => i.id === key).childItems).toHaveLength(1);
 });
 
-test('should group flat set for display [Selectable map pairs with prefix]', () => {
+test('should group flat set for display [Selectable map pairs with prefix, sorted ascending]', () => {
 
     const mapForG1 = new Map<string, any>([['topic-object', {}], ['group-one', 'Group One']]);
     const mapForG2 = new Map<string, any>([['group-two', 'Group Two']]);
@@ -64,7 +64,7 @@ test('should group flat set for display [Selectable map pairs with prefix]', () 
         { id: 7, displayText: 'item seven [G3]', map: mapForG3 }
     ];
 
-    const grouped = DisplayItemUtility.displayInGroups(flat, 'group-');
+    const grouped = DisplayItemUtility.displayInGroups(flat, 'group-', true);
     expect(grouped).not.toBeNull();
     console.log({ grouped });
 
