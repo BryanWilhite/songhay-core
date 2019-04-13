@@ -34,7 +34,7 @@ export class SyndicationFeed {
     static getAtomChannelTitle(rawFeed: any): string | null {
         const atomFeed: any = rawFeed['feed'];
         if (!atomFeed) {
-            console.log('the expected feed is not here');
+            console.warn('the expected feed is not here');
             return null;
         }
         const t = atomFeed['title'];
@@ -48,11 +48,11 @@ export class SyndicationFeed {
     static getAtomChannelItems(rawFeed: any): Array<{ [key: string]: any; }> {
         const channelItems: Array<{ [key: string]: any; }> = rawFeed['feed']['entry'];
         if (!channelItems) {
-            console.log('the expected feed root is not here');
+            console.warn('the expected feed root is not here');
             return [];
         }
         if (!channelItems.length) {
-            console.log('the expected feed items are not here');
+            console.warn('the expected feed items are not here');
             return [];
         }
         return channelItems;
@@ -64,11 +64,11 @@ export class SyndicationFeed {
     static getRssChannelItems(rawFeed: any): Array<{ [key: string]: any; }> {
         const channelItems: Array<{ [key: string]: any; }> = rawFeed['rss']['channel']['item'];
         if (!channelItems) {
-            console.log('the expected RSS channel root is not here');
+            console.warn('the expected RSS channel root is not here');
             return [];
         }
         if (!channelItems.length) {
-            console.log('the expected RSS channel items are not here');
+            console.warn('the expected RSS channel items are not here');
             return [];
         }
         return channelItems;
@@ -80,7 +80,7 @@ export class SyndicationFeed {
     static getRssChannelTitle(rawFeed: any): string | null {
         const channel: any = rawFeed['rss']['channel'];
         if (!channel) {
-            console.log('the expected RSS channel is not here');
+            console.warn('the expected RSS channel is not here');
             return null;
         }
         return channel['title'];

@@ -24,7 +24,7 @@ export class DisplayItemUtility {
     /**
      * return items that can stringify as JSON
      */
-    public static getStringafiableObject(item: MenuDisplayItemModel): { [key: string]: any } {
+    public static getStringifiableObject(item: MenuDisplayItemModel): { [key: string]: any } {
         const mo = (item.map) ? MapObjectUtility.getObject(item.map) : {};
         return {
             ...(item as ColorDisplayItemModel),
@@ -35,7 +35,7 @@ export class DisplayItemUtility {
                 isSelected?: boolean | null;
             }),
             ...{ map: mo },
-            ...{ childItems: (!item.childItems || !item.childItems.length) ? [] : item.childItems.map(i => DisplayItemUtility.getStringafiableObject(i)) }
+            ...{ childItems: (!item.childItems || !item.childItems.length) ? [] : item.childItems.map(i => DisplayItemUtility.getStringifiableObject(i)) }
         };
     }
 
@@ -190,7 +190,7 @@ export class DisplayItemUtility {
      */
     stringify(item: MenuDisplayItemModel): string | null {
         if (!item) { return null; }
-        const stringifiable = DisplayItemUtility.getStringafiableObject(item);
+        const stringifiable = DisplayItemUtility.getStringifiableObject(item);
         return JSON.stringify(stringifiable);
     }
 
@@ -199,7 +199,7 @@ export class DisplayItemUtility {
      */
     stringifyAll(items: MenuDisplayItemModel[]): string | null {
         if (!items) { return null; }
-        const stringifiable = items.forEach(item => DisplayItemUtility.getStringafiableObject(item));
+        const stringifiable = items.forEach(item => DisplayItemUtility.getStringifiableObject(item));
         return JSON.stringify(stringifiable);
     }
 }

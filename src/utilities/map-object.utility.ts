@@ -12,7 +12,7 @@ export class MapObjectUtility {
         valueGetter?: (propertyName: string, propertyValue: TValue) => TValue
     ): Map<string, TValue> | null {
         if (!o) {
-            console.log('object to be mapped is not truthy');
+            console.warn('object to be mapped is not truthy');
             return null;
         }
         const iterable = Object.keys(o).map(propertyName => {
