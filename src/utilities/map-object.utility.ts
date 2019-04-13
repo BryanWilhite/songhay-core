@@ -27,7 +27,7 @@ export class MapObjectUtility {
      * gets @type {Map<string, TValue>} from an object
      * of @type {Array<{ key: string; value: any }>}
      *
-     * @remarks https://stackoverflow.com/a/26265095/22944
+     * @see https://stackoverflow.com/a/26265095/22944
      */
     static getMapFromKeyValuePairs<TValue>(
         pairs: Array<{ key: string; value: any }>,
@@ -39,6 +39,22 @@ export class MapObjectUtility {
             return a;
         }, initialValue);
         return MapObjectUtility.getMap(o, valueGetter);
+    }
+
+    /**
+     * gets an object with string property names
+     * from a map with @types {string | number}
+     *
+     * @see https://macwright.org/2017/03/13/maps-not-strictly-better.html
+     */
+    static getObject(map: Map<string | number, any>): { [key: string]: any } {
+        const o: { [key: string]: any } = {};
+
+        if (!map) { return o; }
+
+        map.forEach(pair => o[pair.key as string] = pair.value);
+
+        return o;
     }
 
 }

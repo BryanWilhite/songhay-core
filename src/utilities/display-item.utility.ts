@@ -1,5 +1,9 @@
+import { ColorDisplayItemModel } from 'src/models/color-display-item.model';
+import { Groupable } from 'src/models/groupable';
 import { MenuDisplayItemModel } from '../models/menu-display-item.model';
+
 import { ArrayUtility } from './array.utility';
+import { MapObjectUtility } from './map-object.utility';
 
 /**
  * static routines for display-item models
@@ -15,6 +19,24 @@ export class DisplayItemUtility {
         DisplayItemUtility.setGrouping(items, groupId);
         const groups = DisplayItemUtility.group(items, groupId);
         return DisplayItemUtility.nestIntoGroups(groups, sortDescending);
+    }
+
+    /**
+     * return items that can stringify as JSON
+     */
+    public static getStringafiableObject(item: MenuDisplayItemModel): { [key: string]: any } {
+        const mo = (item.map) ? MapObjectUtility.getObject(item.map) : {};
+        return {
+            ...(item as ColorDisplayItemModel),
+            ...(item as Groupable),
+            ...(item as {
+                isDefaultSelection: boolean | null;
+                isEnabled?: boolean | null;
+                isSelected?: boolean | null;
+            }),
+            ...{ map: mo },
+            ...{ childItems: (!item.childItems || !item.childItems.length) ? [] : item.childItems.map(i => DisplayItemUtility.getStringafiableObject(i)) }
+        };
     }
 
     /**
@@ -161,5 +183,23 @@ export class DisplayItemUtility {
                     }
                 });
         }
+    }
+
+    /**
+     * return items as JSON
+     */
+    stringify(item: MenuDisplayItemModel): string | null {
+        if (!item) { return null; }
+        const stringifiable = DisplayItemUtility.getStringafiableObject(item);
+        return JSON.stringify(stringifiable);
+    }
+
+    /**
+     * return items as JSON
+     */
+    stringifyAll(items: MenuDisplayItemModel[]): string | null {
+        if (!items) { return null; }
+        const stringifiable = items.forEach(item => DisplayItemUtility.getStringafiableObject(item));
+        return JSON.stringify(stringifiable);
     }
 }
