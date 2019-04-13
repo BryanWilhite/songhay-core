@@ -64,7 +64,7 @@ export class DisplayItemUtility {
                 const menu: MenuDisplayItemModel = {
                     id: first.groupId,
                     displayText: first.groupDisplayText || '',
-                    childItems: groups[i]
+                    childItems: ArrayUtility.sortItems(groups[i], 'sortOrdinal', false, sortDescending)
                 };
                 return menu;
             });
