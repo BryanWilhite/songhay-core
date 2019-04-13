@@ -85,16 +85,36 @@ export class DisplayItemUtility {
             throw new Error('The expected items are not here.');
         }
 
+        const doGroupIdErr = (id: string | number) => {
+            const message = [
+                'The expected selectable map group display text is not here.',
+                ` [ID: ${(id as string || '[missing]')}]`
+            ].join('');
+            console.error(message);
+        };
+
+        const doGroupMapErr = (item: MenuDisplayItemModel) => {
+            console.error('The expected item map is not here.', { item });
+        };
+
+        const doGroupPairErr = (item: MenuDisplayItemModel) => {
+            const message = [
+                'The expected Selectable map pair and/or groupId/displayText is not here.',
+                ` [Group ID: ${(item.groupId as string || '[missing]')}]`,
+                ` [Group Display Text: ${(item.displayText || '[missing]')}]`
+            ].join('');
+            console.error(message, { item });
+        };
+
         const getFirstPair = (item: MenuDisplayItemModel) => {
             if (!item.map || !item.map.size) {
+                doGroupMapErr(item);
                 return null;
             }
             const first = Array.from(item.map.entries())[0];
             const id = first[0];
             const groupDisplayText = first[1];
-            if (!groupDisplayText) {
-                throw new Error('The expected selectable map group display text is not here.');
-            }
+            if (!groupDisplayText) { doGroupIdErr(id); }
             const pair = { id, groupDisplayText };
 
             return pair;
@@ -102,6 +122,7 @@ export class DisplayItemUtility {
 
         const getPairWithId = (item: MenuDisplayItemModel, id: string | number) => {
             if (!item.map || !item.map.size) {
+                doGroupMapErr(item);
                 return null;
             }
             if (!item.map.has(id)) {
@@ -109,38 +130,36 @@ export class DisplayItemUtility {
                     .find(i => i.toString().startsWith(id as string)) as string;
             }
             const groupDisplayText = item.map.get(id);
-            if (!groupDisplayText) {
-                throw new Error('The expected selectable map group display text is not here.');
-            }
+            if (!groupDisplayText) { doGroupIdErr(id); }
             const pair = { id, groupDisplayText };
 
             return pair;
         };
 
         if (groupId) {
-            items.forEach(i => {
-                const pair = getPairWithId(i, groupId);
-                if (!pair) {
-                    if (!i.groupId || !i.displayText) {
-                        throw new Error('The expected Selectable map pair and/or groupId/displayText is not here.');
+            items
+                .filter(i => i ? true : false)
+                .forEach(i => {
+                    const pair = getPairWithId(i, groupId);
+                    if (!pair) {
+                        if (!i.groupId || !i.displayText) { doGroupPairErr(i); }
+                    } else {
+                        i.groupId = pair.id;
+                        i.groupDisplayText = pair.groupDisplayText;
                     }
-                    return;
-                }
-                i.groupId = pair.id;
-                i.groupDisplayText = pair.groupDisplayText;
-            });
+                });
         } else {
-            items.forEach(i => {
-                const pair = getFirstPair(i);
-                if (!pair) {
-                    if (!i.groupId || !i.displayText) {
-                        throw new Error('The expected Selectable map pair and/or groupId/displayText is not here.');
+            items
+                .filter(i => i ? true : false)
+                .forEach(i => {
+                    const pair = getFirstPair(i);
+                    if (!pair) {
+                        if (!i.groupId || !i.displayText) { doGroupPairErr(i); }
+                    } else {
+                        i.groupId = pair.id;
+                        i.groupDisplayText = pair.groupDisplayText;
                     }
-                    return;
-                }
-                i.groupId = pair.id;
-                i.groupDisplayText = pair.groupDisplayText;
-            });
+                });
         }
     }
 }
