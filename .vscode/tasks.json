@@ -52,7 +52,7 @@
             "problemMatcher": []
         },
         {
-            "label": "typedoc: add .nojekyll file for GutHub",
+            "label": "typedoc: add .nojekyll file for GitHub",
             "type": "shell",
             "options": {
                 "cwd": "${workspaceFolder}/docs"
