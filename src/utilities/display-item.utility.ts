@@ -188,7 +188,7 @@ export class DisplayItemUtility {
     /**
      * return items as JSON
      */
-    stringify(item: MenuDisplayItemModel): string | null {
+    public static stringify(item: MenuDisplayItemModel): string | null {
         if (!item) { return null; }
         const stringifiable = DisplayItemUtility.getStringifiableObject(item);
         return JSON.stringify(stringifiable);
@@ -197,7 +197,7 @@ export class DisplayItemUtility {
     /**
      * return items as JSON
      */
-    stringifyAll(items: MenuDisplayItemModel[]): string | null {
+    public static stringifyAll(items: MenuDisplayItemModel[]): string | null {
         if (!items) { return null; }
         const stringifiable = items.forEach(item => DisplayItemUtility.getStringifiableObject(item));
         return JSON.stringify(stringifiable);
