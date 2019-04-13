@@ -99,8 +99,12 @@ export class ArrayUtility {
             return items;
         }
         const sorted = isNumeric
-            ? items.sort((a, b) => +a[propertyName] - +b[propertyName])
+            ? items.sort((a, b) => {
+                if ((typeof a.propertyName === 'undefined') || typeof b.propertyName === 'undefined') { return -1; }
+                return +a[propertyName] - +b[propertyName];
+            })
             : items.sort((a, b) => {
+                if ((typeof a.propertyName === 'undefined') || typeof b.propertyName === 'undefined') { return -1; }
                 const A = a[propertyName].toUpperCase();
                 const B = b[propertyName].toUpperCase();
                 if (A < B) {
