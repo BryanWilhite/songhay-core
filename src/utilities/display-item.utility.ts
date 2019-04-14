@@ -22,6 +22,55 @@ export class DisplayItemUtility {
     }
 
     /**
+     * return the display item pair
+     * from the selectable map
+     */
+    public static getItemMapPair(item: MenuDisplayItemModel, groupId?: string | number) {
+
+        const doGroupIdWarning = (id: string | number) => {
+            const message = [
+                'The expected selectable map group display text is not here.',
+                ` [ID: ${(id as string || '[missing]')}]`
+            ].join('');
+            console.warn(message);
+        };
+
+        const doGroupMapWarning = () => {
+            console.warn('The expected item map is not here.', { item });
+        };
+
+        const getFirstPair = () => {
+            if (!item.map || !item.map.size) {
+                doGroupMapWarning();
+                return null;
+            }
+            const first = Array.from(item.map.entries())[0];
+            const id = first[0];
+            const groupDisplayText = first[1];
+            if (!groupDisplayText) { doGroupIdWarning(id); }
+            return { id, groupDisplayText };
+        };
+
+        const getPairWithId = (id: string | number) => {
+            if (!item.map || !item.map.size) {
+                doGroupMapWarning();
+                return null;
+            }
+            if (!item.map.has(id)) {
+                id = Array.from(item.map.keys())
+                    .find(i => i.toString().startsWith(id as string)) as string;
+            }
+            const groupDisplayText = item.map.get(id);
+            if (!groupDisplayText) { doGroupIdWarning(id); }
+            return { id, groupDisplayText };
+        };
+
+        const pair = groupId ? getPairWithId(groupId) : getFirstPair();
+
+        return pair;
+    }
+
+    /**
      * return items that can stringify as JSON
      */
     public static getStringifiableObject(item: MenuDisplayItemModel): { [key: string]: any } {
@@ -68,28 +117,28 @@ export class DisplayItemUtility {
             return reverse ? sorted.reverse() : sorted;
         };
 
-        const nested = sort(Object.keys(groups), sortDescending)
-            .map(i => {
-                const group = groups[i] as MenuDisplayItemModel[];
-                if (!group.length) {
-                    throw new Error('The expected grouping data format is not here.');
-                }
+        const nested = sort(Object.keys(groups), sortDescending).map(i => {
 
-                const first = group[0];
-                if (!first.groupId) {
-                    throw new Error('The expected grouping identifier is not here.');
-                }
-                if (!first.displayText) {
-                    throw new Error('The expected grouping display text is not here.');
-                }
+            const group = groups[i] as MenuDisplayItemModel[];
+            if (!group.length) {
+                throw new Error('The expected grouping data format is not here.');
+            }
 
-                const menu: MenuDisplayItemModel = {
-                    id: first.groupId,
-                    displayText: first.groupDisplayText || '',
-                    childItems: ArrayUtility.sortItems(groups[i], 'sortOrdinal', false, sortDescending)
-                };
-                return menu;
-            });
+            const first = group[0];
+            if (!first.groupId) {
+                throw new Error('The expected grouping identifier is not here.');
+            }
+            if (!first.displayText) {
+                throw new Error('The expected grouping display text is not here.');
+            }
+
+            const menu: MenuDisplayItemModel = {
+                id: first.groupId,
+                displayText: first.groupDisplayText || '',
+                childItems: ArrayUtility.sortItems(groups[i], 'sortOrdinal', false, sortDescending)
+            };
+            return menu;
+        });
 
         return nested;
     }
@@ -107,18 +156,6 @@ export class DisplayItemUtility {
             throw new Error('The expected items are not here.');
         }
 
-        const doGroupIdWarning = (id: string | number) => {
-            const message = [
-                'The expected selectable map group display text is not here.',
-                ` [ID: ${(id as string || '[missing]')}]`
-            ].join('');
-            console.warn(message);
-        };
-
-        const doGroupMapWarning = (item: MenuDisplayItemModel) => {
-            console.warn('The expected item map is not here.', { item });
-        };
-
         const doGroupPairWarning = (item: MenuDisplayItemModel) => {
             const message = [
                 'The expected Selectable map pair and/or groupId/displayText is not here.',
@@ -128,40 +165,10 @@ export class DisplayItemUtility {
             console.warn(message, { item });
         };
 
-        const getFirstPair = (item: MenuDisplayItemModel) => {
-            if (!item.map || !item.map.size) {
-                doGroupMapWarning(item);
-                return null;
-            }
-            const first = Array.from(item.map.entries())[0];
-            const id = first[0];
-            const groupDisplayText = first[1];
-            if (!groupDisplayText) { doGroupIdWarning(id); }
-            const pair = { id, groupDisplayText };
-
-            return pair;
-        };
-
-        const getPairWithId = (item: MenuDisplayItemModel, id: string | number) => {
-            if (!item.map || !item.map.size) {
-                doGroupMapWarning(item);
-                return null;
-            }
-            if (!item.map.has(id)) {
-                id = Array.from(item.map.keys())
-                    .find(i => i.toString().startsWith(id as string)) as string;
-            }
-            const groupDisplayText = item.map.get(id);
-            if (!groupDisplayText) { doGroupIdWarning(id); }
-            const pair = { id, groupDisplayText };
-
-            return pair;
-        };
-
         items
             .filter(i => i ? true : false)
             .forEach(i => {
-                const pair = groupId ? getPairWithId(i, groupId) : getFirstPair(i);
+                const pair = DisplayItemUtility.getItemMapPair(i, groupId);
                 if (!pair) {
                     if (!i.groupId || !i.displayText) { doGroupPairWarning(i); }
                 } else {

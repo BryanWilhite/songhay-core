@@ -4,15 +4,28 @@
         "declaration": true,
         "esModuleInterop": true,
         "importHelpers": true,
-        "lib": ["es2018", "dom"],
+        "lib": [
+            "es2018",
+            "dom"
+        ],
         "module": "es2015",
         "moduleResolution": "node",
         "outDir": "./core",
         "resolveJsonModule": true,
         "sourceMap": true,
         "strict": true,
-        "target": "es5"
+        "target": "es5",
+        "typeRoots": [
+            "node_modules/@types"
+        ]
     },
-    "include": ["src", "index.ts"],
-    "exclude": ["node_modules", "**/*.spec.*", "**/__tests__/*"]
+    "include": [
+        "src",
+        "index.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.*",
+        "**/__tests__/*"
+    ]
 }

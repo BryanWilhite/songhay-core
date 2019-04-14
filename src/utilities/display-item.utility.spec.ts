@@ -126,3 +126,11 @@ test('should stringify object from display item groups', () => {
 
     console.log({ grouped, stringified });
 });
+
+test('should group large set of display items', () => {
+    const grouped1 = DisplayItemUtility.displayInGroups([...items], 'group-year-month-');
+    // console.log(grouped1);
+
+    const grouped2 = DisplayItemUtility.displayInGroups([...items], 'topic-');
+    console.log(grouped2);
+});
