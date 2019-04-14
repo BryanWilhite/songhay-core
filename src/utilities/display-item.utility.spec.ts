@@ -128,7 +128,7 @@ it('should stringify object from display item groups', () => {
     console.log({ grouped, stringified });
 });
 
-fit('should get a mapped pair', () => {
+it('should get a mapped pair or return a default pair', () => {
     const item = [...items].find(i => i.id === 'studio-status-report-2019-03') as MenuDisplayItemModel;
     expect(item).toBeTruthy();
     item.map = MapObjectUtility.getMap(item.map);
@@ -138,12 +138,4 @@ fit('should get a mapped pair', () => {
         DisplayItemUtility.getItemMapPair(item, 'group-year-month-'),
         DisplayItemUtility.getItemMapPair(item, 'topic-')
     );
-});
-
-it('should group large set of display items', () => {
-    const grouped1 = DisplayItemUtility.displayInGroups([...items], 'group-year-month-');
-    console.log(grouped1);
-
-    const grouped2 = DisplayItemUtility.displayInGroups([...items], 'topic-');
-    console.log(grouped2);
 });
