@@ -25,7 +25,7 @@ export class DisplayItemUtility {
      * return items that can stringify as JSON
      */
     public static getStringifiableObject(item: MenuDisplayItemModel): { [key: string]: any } {
-        const mo = (item.map) ? MapObjectUtility.getObject(item.map) : {};
+        const mo = (!item.map) ? {} : MapObjectUtility.getObject(item.map);
         return {
             ...(item as ColorDisplayItemModel),
             ...(item as Groupable),
@@ -107,36 +107,36 @@ export class DisplayItemUtility {
             throw new Error('The expected items are not here.');
         }
 
-        const doGroupIdErr = (id: string | number) => {
+        const doGroupIdWarning = (id: string | number) => {
             const message = [
                 'The expected selectable map group display text is not here.',
                 ` [ID: ${(id as string || '[missing]')}]`
             ].join('');
-            console.error(message);
+            console.warn(message);
         };
 
-        const doGroupMapErr = (item: MenuDisplayItemModel) => {
-            console.error('The expected item map is not here.', { item });
+        const doGroupMapWarning = (item: MenuDisplayItemModel) => {
+            console.warn('The expected item map is not here.', { item });
         };
 
-        const doGroupPairErr = (item: MenuDisplayItemModel) => {
+        const doGroupPairWarning = (item: MenuDisplayItemModel) => {
             const message = [
                 'The expected Selectable map pair and/or groupId/displayText is not here.',
                 ` [Group ID: ${(item.groupId as string || '[missing]')}]`,
                 ` [Group Display Text: ${(item.displayText || '[missing]')}]`
             ].join('');
-            console.error(message, { item });
+            console.warn(message, { item });
         };
 
         const getFirstPair = (item: MenuDisplayItemModel) => {
             if (!item.map || !item.map.size) {
-                doGroupMapErr(item);
+                doGroupMapWarning(item);
                 return null;
             }
             const first = Array.from(item.map.entries())[0];
             const id = first[0];
             const groupDisplayText = first[1];
-            if (!groupDisplayText) { doGroupIdErr(id); }
+            if (!groupDisplayText) { doGroupIdWarning(id); }
             const pair = { id, groupDisplayText };
 
             return pair;
@@ -144,7 +144,7 @@ export class DisplayItemUtility {
 
         const getPairWithId = (item: MenuDisplayItemModel, id: string | number) => {
             if (!item.map || !item.map.size) {
-                doGroupMapErr(item);
+                doGroupMapWarning(item);
                 return null;
             }
             if (!item.map.has(id)) {
@@ -152,37 +152,23 @@ export class DisplayItemUtility {
                     .find(i => i.toString().startsWith(id as string)) as string;
             }
             const groupDisplayText = item.map.get(id);
-            if (!groupDisplayText) { doGroupIdErr(id); }
+            if (!groupDisplayText) { doGroupIdWarning(id); }
             const pair = { id, groupDisplayText };
 
             return pair;
         };
 
-        if (groupId) {
-            items
-                .filter(i => i ? true : false)
-                .forEach(i => {
-                    const pair = getPairWithId(i, groupId);
-                    if (!pair) {
-                        if (!i.groupId || !i.displayText) { doGroupPairErr(i); }
-                    } else {
-                        i.groupId = pair.id;
-                        i.groupDisplayText = pair.groupDisplayText;
-                    }
-                });
-        } else {
-            items
-                .filter(i => i ? true : false)
-                .forEach(i => {
-                    const pair = getFirstPair(i);
-                    if (!pair) {
-                        if (!i.groupId || !i.displayText) { doGroupPairErr(i); }
-                    } else {
-                        i.groupId = pair.id;
-                        i.groupDisplayText = pair.groupDisplayText;
-                    }
-                });
-        }
+        items
+            .filter(i => i ? true : false)
+            .forEach(i => {
+                const pair = groupId ? getPairWithId(i, groupId) : getFirstPair(i);
+                if (!pair) {
+                    if (!i.groupId || !i.displayText) { doGroupPairWarning(i); }
+                } else {
+                    i.groupId = pair.id;
+                    i.groupDisplayText = pair.groupDisplayText;
+                }
+            });
     }
 
     /**
@@ -199,7 +185,7 @@ export class DisplayItemUtility {
      */
     public static stringifyAll(items: MenuDisplayItemModel[]): string | null {
         if (!items) { return null; }
-        const stringifiable = items.forEach(item => DisplayItemUtility.getStringifiableObject(item));
+        const stringifiable = items.map(item => DisplayItemUtility.getStringifiableObject(item));
         return JSON.stringify(stringifiable);
     }
 }

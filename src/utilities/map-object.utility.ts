@@ -52,7 +52,7 @@ export class MapObjectUtility {
 
         if (!map) { return o; }
 
-        map.forEach(pair => o[pair.key as string] = pair.value);
+        map.forEach((v: any, k: string | number) => o[k] = v);
 
         return o;
     }

@@ -40,3 +40,23 @@ test('should return `Map<string, number>` from key-value pairs', () => {
     expect(mapped).toBeTruthy();
     console.log({ mapped });
 });
+
+test('should return plain object from map', () => {
+    const mapForG1 = new Map<string, any>([['group-one', 'Group One']]);
+    const mapForG2: Map<string, any> = null;
+    const mapForG3 = new Map<string, any>([['group-three', 'Group Three']]);
+
+    const o1 = MapObjectUtility.getObject(mapForG1);
+    expect(o1).toBeTruthy();
+    expect(Object.keys(o1).filter(i => i ? true : false).length).toBeGreaterThan(0);
+
+    const o2 = MapObjectUtility.getObject(mapForG2);
+    expect(o2).toBeTruthy();
+    expect(Object.keys(o2).filter(i => i ? true : false).length).toEqual(0);
+
+    const o3 = MapObjectUtility.getObject(mapForG3);
+    expect(o3).toBeTruthy();
+    expect(Object.keys(o3).filter(i => i ? true : false).length).toBeGreaterThan(0);
+
+    console.log({ o1, o2, o3 });
+});
