@@ -3,8 +3,9 @@ import { MenuDisplayItemModel } from '../models/menu-display-item.model';
 import { DisplayItemUtility } from './display-item.utility';
 
 import items from '../mocks/app-songhay-blog-q2-2018-items.json';
+import { MapObjectUtility } from './map-object.utility';
 
-test('should group flat set for display [empty or null Selectable map pairs]', () => {
+it('should group flat set for display [empty or null Selectable map pairs]', () => {
 
     const mapForG1 = new Map<string, any>();
     const mapForG2: Map<string, any> = null;
@@ -25,7 +26,7 @@ test('should group flat set for display [empty or null Selectable map pairs]', (
     console.log({ grouped });
 });
 
-test('should group flat set for display [Selectable map pairs]', () => {
+it('should group flat set for display [Selectable map pairs]', () => {
 
     const mapForG1 = new Map<string, any>([['group-one', 'Group One']]);
     const mapForG2 = new Map<string, any>([['group-two', 'Group Two']]);
@@ -50,7 +51,7 @@ test('should group flat set for display [Selectable map pairs]', () => {
     expect(grouped.find(i => i.id === key).childItems).toHaveLength(1);
 });
 
-test('should group flat set for display [Selectable map pairs with prefix, sorted ascending]', () => {
+it('should group flat set for display [Selectable map pairs with prefix, sorted ascending]', () => {
 
     const mapForG1 = new Map<string, any>([['topic-object', {}], ['group-one', 'Group One']]);
     const mapForG2 = new Map<string, any>([['group-two', 'Group Two']]);
@@ -75,7 +76,7 @@ test('should group flat set for display [Selectable map pairs with prefix, sorte
     expect(grouped.find(i => i.id === key).childItems).toHaveLength(1);
 });
 
-test('should get stringifiable object from display item groups', () => {
+it('should get stringifiable object from display item groups', () => {
 
     const mapForG1 = new Map<string, any>([['topic-object', {}], ['group-one', 'Group One']]);
     const mapForG2 = new Map<string, any>([['group-two', 'Group Two']]);
@@ -101,7 +102,7 @@ test('should get stringifiable object from display item groups', () => {
     console.log({ grouped, json: JSON.stringify(stringifiable) });
 });
 
-test('should stringify object from display item groups', () => {
+it('should stringify object from display item groups', () => {
 
     const mapForG1 = new Map<string, any>([['topic-object', {}], ['group-one', 'Group One']]);
     const mapForG2 = new Map<string, any>([['group-two', 'Group Two']]);
@@ -127,9 +128,21 @@ test('should stringify object from display item groups', () => {
     console.log({ grouped, stringified });
 });
 
-test('should group large set of display items', () => {
+fit('should get a mapped pair', () => {
+    const item = [...items].find(i => i.id === 'studio-status-report-2019-03') as MenuDisplayItemModel;
+    expect(item).toBeTruthy();
+    item.map = MapObjectUtility.getMap(item.map);
+
+    console.log(
+        'getItemMapPair',
+        DisplayItemUtility.getItemMapPair(item, 'group-year-month-'),
+        DisplayItemUtility.getItemMapPair(item, 'topic-')
+    );
+});
+
+it('should group large set of display items', () => {
     const grouped1 = DisplayItemUtility.displayInGroups([...items], 'group-year-month-');
-    // console.log(grouped1);
+    console.log(grouped1);
 
     const grouped2 = DisplayItemUtility.displayInGroups([...items], 'topic-');
     console.log(grouped2);

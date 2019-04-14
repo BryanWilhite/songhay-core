@@ -25,7 +25,9 @@ export class DisplayItemUtility {
      * return the display item pair
      * from the selectable map
      */
-    public static getItemMapPair(item: MenuDisplayItemModel, groupId?: string | number) {
+    public static getItemMapPair(item: MenuDisplayItemModel, groupId?: string | number): { id: string | number; displayText: string; } {
+
+        const nonePair = { id: 'group-none', displayText: '[No Grouping]' };
 
         const doGroupIdWarning = (id: string | number) => {
             const message = [
@@ -42,27 +44,35 @@ export class DisplayItemUtility {
         const getFirstPair = () => {
             if (!item.map || !item.map.size) {
                 doGroupMapWarning();
-                return null;
+                return nonePair;
             }
             const first = Array.from(item.map.entries())[0];
             const id = first[0];
-            const groupDisplayText = first[1];
-            if (!groupDisplayText) { doGroupIdWarning(id); }
-            return { id, groupDisplayText };
+            const displayText = first[1];
+            if (!displayText) { doGroupIdWarning(id); }
+            return { id, displayText };
         };
 
         const getPairWithId = (id: string | number) => {
+
             if (!item.map || !item.map.size) {
                 doGroupMapWarning();
-                return null;
+                return nonePair;
             }
             if (!item.map.has(id)) {
-                id = Array.from(item.map.keys())
+                id = Array
+                    .from(item.map.keys())
                     .find(i => i.toString().startsWith(id as string)) as string;
+
+                if (!id) {
+                    doGroupMapWarning();
+                    return nonePair;
+                }
             }
-            const groupDisplayText = item.map.get(id);
-            if (!groupDisplayText) { doGroupIdWarning(id); }
-            return { id, groupDisplayText };
+
+            const displayText = item.map.get(id);
+            if (!displayText) { doGroupIdWarning(id); }
+            return { id, displayText };
         };
 
         const pair = groupId ? getPairWithId(groupId) : getFirstPair();
@@ -173,7 +183,7 @@ export class DisplayItemUtility {
                     if (!i.groupId || !i.displayText) { doGroupPairWarning(i); }
                 } else {
                     i.groupId = pair.id;
-                    i.groupDisplayText = pair.groupDisplayText;
+                    i.groupDisplayText = pair.displayText;
                 }
             });
     }
