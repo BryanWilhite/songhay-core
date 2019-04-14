@@ -2,6 +2,8 @@ import { MenuDisplayItemModel } from '../models/menu-display-item.model';
 
 import { DisplayItemUtility } from './display-item.utility';
 
+import items from '../mocks/app-songhay-blog-q2-2018-items.json';
+
 test('should group flat set for display [empty or null Selectable map pairs]', () => {
 
     const mapForG1 = new Map<string, any>();

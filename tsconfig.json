@@ -2,10 +2,13 @@
     "compilerOptions": {
         "baseUrl": "./",
         "declaration": true,
+        "esModuleInterop": true,
         "importHelpers": true,
         "lib": ["es2018", "dom"],
+        "module": "es2015",
         "moduleResolution": "node",
         "outDir": "./core",
+        "resolveJsonModule": true,
         "sourceMap": true,
         "strict": true,
         "target": "es5"
