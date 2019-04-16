@@ -27,7 +27,7 @@ export class DisplayItemUtility {
      */
     public static getItemMapPair(item: MenuDisplayItemModel, groupId?: string | number): { id: string | number; displayText: string; } {
 
-        const nonePair = { id: 'group-none', displayText: '[No Grouping]' };
+        const nonePair = { id: 'group-none', displayText: '<!--zzz-->[no grouping]' };
 
         const doGroupIdWarning = (id: string | number) => {
             const message = [
