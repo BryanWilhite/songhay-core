@@ -6,6 +6,11 @@ import { ArrayUtility } from './array.utility';
 import { MapObjectUtility } from './map-object.utility';
 
 /**
+ * the default fallback display item grouping pair
+ */
+export const DISPLAY_ITEM_GROUP_NONE = { id: 'zzz-group-none', displayText: '[no grouping]' };
+
+/**
  * static routines for display-item models
  *
  * @export
@@ -27,8 +32,6 @@ export class DisplayItemUtility {
      */
     public static getItemMapPair(item: MenuDisplayItemModel, groupId?: string | number): { id: string | number; displayText: string; } {
 
-        const nonePair = { id: 'group-zzz-none', displayText: '[no grouping]' };
-
         const doGroupIdWarning = (id: string | number) => {
             const message = [
                 'The expected selectable map group display text is not here.',
@@ -44,7 +47,7 @@ export class DisplayItemUtility {
         const getFirstPair = () => {
             if (!item.map || !item.map.size) {
                 doGroupMapWarning();
-                return nonePair;
+                return DISPLAY_ITEM_GROUP_NONE;
             }
             const first = Array.from(item.map.entries())[0];
             const id = first[0];
@@ -57,7 +60,7 @@ export class DisplayItemUtility {
 
             if (!item.map || !item.map.size) {
                 doGroupMapWarning();
-                return nonePair;
+                return DISPLAY_ITEM_GROUP_NONE;
             }
             if (!item.map.has(id)) {
                 id = Array
@@ -66,7 +69,7 @@ export class DisplayItemUtility {
 
                 if (!id) {
                     doGroupMapWarning();
-                    return nonePair;
+                    return DISPLAY_ITEM_GROUP_NONE;
                 }
             }
 

@@ -1,8 +1,7 @@
+import items from '../mocks/app-songhay-blog-q2-2018-items.json';
 import { MenuDisplayItemModel } from '../models/menu-display-item.model';
 
-import { DisplayItemUtility } from './display-item.utility';
-
-import items from '../mocks/app-songhay-blog-q2-2018-items.json';
+import { DisplayItemUtility, DISPLAY_ITEM_GROUP_NONE } from './display-item.utility';
 import { MapObjectUtility } from './map-object.utility';
 
 it('should group flat set for display [empty or null Selectable map pairs]', () => {
@@ -138,4 +137,28 @@ it('should get a mapped pair or return a default pair', () => {
         DisplayItemUtility.getItemMapPair(item, 'group-year-month-'),
         DisplayItemUtility.getItemMapPair(item, 'topic-')
     );
+});
+
+fit('should sort fallback group to the end', () => {
+
+    const mapForG1 = new Map<string, any>([['topic-one', 'First Topic'], ['group-one', 'Group One']]);
+    const mapForG2 = new Map<string, any>([['group-two', 'Group Two']]);
+    const mapForG3 = new Map<string, any>([['topic-two', 'Second Topic'], ['group-three', 'Group Three']]);
+
+    const flat: MenuDisplayItemModel[] = [
+        { id: 1, displayText: 'item one [G1]', map: mapForG1 },
+        { id: 2, displayText: 'item two [G1]', map: mapForG1 },
+        { id: 3, displayText: 'item three [G1]', map: mapForG2 },
+        { id: 4, displayText: 'item four [G2]', map: mapForG2 },
+        { id: 5, displayText: 'item five [G2]', map: mapForG2 },
+        { id: 6, displayText: 'item six [G2]', map: mapForG2 },
+        { id: 7, displayText: 'item seven [G3]', map: mapForG3 }
+    ];
+
+    const grouped = DisplayItemUtility.displayInGroups(flat, 'topic-', false);
+    expect(grouped).toBeTruthy();
+    expect(grouped.length).toBeGreaterThan(0);
+
+    console.log({grouped});
+    expect(grouped[grouped.length - 1].id).toEqual(DISPLAY_ITEM_GROUP_NONE.id);
 });
