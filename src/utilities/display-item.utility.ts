@@ -68,7 +68,7 @@ export class DisplayItemUtility {
                     .find(i => i.toString().startsWith(id as string)) as string;
 
                 if (!id) {
-                    doGroupMapWarning();
+                    console.warn('The expected item map identifier is not here.', { item });
                     return DISPLAY_ITEM_GROUP_NONE;
                 }
             }
