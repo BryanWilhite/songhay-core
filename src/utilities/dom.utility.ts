@@ -130,4 +130,12 @@ export class DomUtility {
         );
         return Array.from(elements).map(e => e as TElement);
     }
+
+    /**
+     * returns a @type {Promise} that resolves
+     * in the specified milliseconds
+     */
+    static timeout(ms: number) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 }
