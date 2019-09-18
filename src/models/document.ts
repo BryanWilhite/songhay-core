@@ -1,9 +1,12 @@
+import { PublicationItem } from './publication-item';
+import { Temporal } from './temporal';
+
 /**
  * GenericWeb Document
  *
  * @export
  */
-export interface Document {
+export interface Document extends PublicationItem, Temporal {
     /**
      * identifier of this instance
      */
@@ -30,16 +33,6 @@ export interface Document {
     path: string;
 
     /**
-     * incept date
-     */
-    createDate: Date | string | null;
-
-    /**
-     * modification date
-     */
-    modificationDate: Date | string | null;
-
-    /**
      * template identifier
      */
     templateId?: number | null;
@@ -55,19 +48,9 @@ export interface Document {
     isRoot?: boolean | null;
 
     /**
-     * is this instance active?
-     */
-    isActive?: boolean | null;
-
-    /**
      * sort-order value
      */
     sortOrdinal?: number | null;
-
-    /**
-     * Client identifier
-     */
-    clientId?: string;
 
     /**
      * tag

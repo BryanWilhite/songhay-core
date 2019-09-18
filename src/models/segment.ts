@@ -1,9 +1,12 @@
+import { PublicationItem } from './publication-item';
+import { Temporal } from './temporal';
+
 /**
  * GenericWeb Segment
  *
  * @export
  */
-export interface Segment {
+export interface Segment extends PublicationItem, Temporal {
     /**
      * identifier of this instance
      */
@@ -20,22 +23,7 @@ export interface Segment {
     sortOrdinal?: number | null;
 
     /**
-     * incept date
-     */
-    createDate: Date | null;
-
-    /**
      * parent Segment identifier
      */
     parentSegmentId?: number | null;
-
-    /**
-     * Client identifier
-     */
-    clientId?: string;
-
-    /**
-     * is this instance active?
-     */
-    isActive?: boolean | null;
 }

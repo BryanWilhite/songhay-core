@@ -1,7 +1,10 @@
+import { PublicationItem } from './publication-item';
+import { Temporal } from './temporal';
+
 /**
  * GenericWeb Document
  */
-export interface Fragment {
+export interface Fragment extends PublicationItem, Temporal {
     /**
      * identifier of this instance
      */
@@ -33,21 +36,6 @@ export interface Fragment {
     itemText?: string;
 
     /**
-     * incept date
-     */
-    createDate: Date | string | null;
-
-    /**
-     * end date
-     */
-    endDate?: Date | string | null;
-
-    /**
-     * modification date
-     */
-    modificationDate: Date | string | null;
-
-    /**
      * Document identifier
      */
     documentId?: number | null;
@@ -76,14 +64,4 @@ export interface Fragment {
      * is this instance wrapping?
      */
     isWrapper?: boolean | null;
-
-    /**
-     * Client identifier
-     */
-    clientId?: string;
-
-    /**
-     * is this instance active?
-     */
-    isActive?: boolean | null;
 }
