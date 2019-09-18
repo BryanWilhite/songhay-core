@@ -1,7 +1,7 @@
 /**
  * Frequently-used categories for @see DisplayItemModel .
  */
-export type DisplayItemModelCategories =
+export type MenuDisplayItemModelGroups =
     | 'GenericWebDocument'
     | 'GenericWebFragment'
     | 'GenericWebLog'
