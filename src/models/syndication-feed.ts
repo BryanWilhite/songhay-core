@@ -1,3 +1,5 @@
+import { SyndicationFeedItem } from './syndication-feed-item';
+
 /**
  * defines a common Syndication Feed model
  *
@@ -12,7 +14,7 @@ export class SyndicationFeed {
     /**
      * syndication feed items
      */
-    feedItems: Array<{ title: string; link: string }>;
+    feedItems: SyndicationFeedItem[];
 
     /**
      * syndication feed title
