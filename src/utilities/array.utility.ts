@@ -29,7 +29,7 @@ export class ArrayUtility {
     }
 
     /**
-     * reduces the specified reducible in @type {ReducedGroup} groups
+     * reduces the specified reducible to @type {ReducedGroup} groups
      *
      * @description https://github.com/BryanWilhite/songhay-core/issues/20
      */

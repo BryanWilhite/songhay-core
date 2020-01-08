@@ -1,4 +1,5 @@
 import { MenuDisplayItemModel } from '../models/menu-display-item.model';
+import { ReducedGroup } from '../models/reduced-group';
 
 import { ArrayUtility } from './array.utility';
 
@@ -61,26 +62,16 @@ const flat: MenuDisplayItemModel[] = [
 ];
 
 it('should group flat set', () => {
-    const grouped = ArrayUtility.groupBy(flat, i => i.groupId as string);
-    expect(grouped).not.toBeNull();
-    console.log({grouped});
+    const groups: ReducedGroup[] = ArrayUtility.groupBy(flat, (i: MenuDisplayItemModel) => i.groupId);
+    expect(groups).not.toBeNull();
+    console.log({groups});
 
-    const key = 'group-three';
-    expect(grouped).toHaveProperty(key);
-    expect(grouped[key]).toHaveLength(1);
+    const groupId = 'group-three';
+    const group = groups.find(i => i.key === groupId);
+    expect(group.values).toHaveLength(1);
 
-    const nested = Object.keys(grouped).map(i => {
-        const first = grouped[i][0];
-        const menu: MenuDisplayItemModel = {
-            id: first.groupId,
-            displayText: first.groupDisplayText,
-            childItems: grouped[i]
-        };
-        return menu;
-    });
-    expect(nested).not.toBeNull();
-    console.log({nested});
-
-    expect(nested.find(i => i.id === key)).toBeTruthy();
-    expect(nested.find(i => i.id === key).childItems).toHaveLength(1);
+    const first = group.values[0] as MenuDisplayItemModel;
+    expect(first).not.toBeNull();
+    console.log({first});
+    expect(first.groupId).toEqual(groupId);
 });
