@@ -1,3 +1,5 @@
+import { ReducedGroup } from 'src/models/reduced-group';
+
 /**
  * static members for @type {Array}
  *
@@ -27,53 +29,35 @@ export class ArrayUtility {
     }
 
     /**
-     * groups an object with @type {string} keys
+     * reduces the specified reducible in @type {ReducedGroup} groups
      *
-     * @description https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_groupby
-     * @description https://stackoverflow.com/a/48981669/22944
+     * @description https://github.com/BryanWilhite/songhay-core/issues/20
      */
-    public static groupBy<T extends { [key: string]: any }>(
-        data: T[],
-        keyGetter: (datum: T) => string): { [key: string]: T[] } {
-        if (!data) { return {}; }
-
-        const initialValue = {} as T;
-        const grouped = data.reduce(
+    // tslint:disable-next-line:ban-types
+    public static groupBy(reducible: any[], keyGetter: Function): ReducedGroup[] {
+        const initialValue = {};
+        const groupByObjects = reducible.reduce(
             (
-                accumulator: T,
-                current: T,
-                index: number,
-                dataReference: T[],
-                key = keyGetter(current)
-            ) => ((accumulator[key] || (accumulator[key] = [])).push(current), accumulator),
-            initialValue
+                accumulator: any,
+                current: any,
+                i: number,
+                dataRef: any,
+                k: any = keyGetter(current)
+            ) => ((accumulator[k] || (accumulator[k] = [])).push(current), accumulator), initialValue
         );
-        return grouped;
-    }
+        const groupByModels: ReducedGroup[] = [];
 
-    /**
-     * groups an object with @type {string} keys
-     * into numeric-keyed groups
-     *
-     * @description https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_groupby
-     */
-    public static groupByNumeric<T extends { [key: string]: any }>(
-        data: T[],
-        keyGetter: (datum: T) => number): { [key: number]: T[] } {
-        if (!data) { return {}; }
+        for (const p in groupByObjects) {
+            if (!groupByObjects.hasOwnProperty(p)) {
+                continue;
+            }
+            groupByModels.push({
+                key: p,
+                values: groupByObjects[p]
+            });
+        }
 
-        const initialValue = {} as T;
-        const grouped = data.reduce(
-            (
-                accumulator: T,
-                current: T,
-                index: number,
-                dataReference: T[],
-                key = keyGetter(current)
-            ) => ((accumulator[key] || (accumulator[key] = [])).push(current), accumulator),
-            initialValue
-        );
-        return grouped;
+        return groupByModels;
     }
 
     /**

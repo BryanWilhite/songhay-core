@@ -4,6 +4,7 @@ import { MenuDisplayItemModel } from '../models/menu-display-item.model';
 
 import { ArrayUtility } from './array.utility';
 import { MapObjectUtility } from './map-object.utility';
+import { ReducedGroupUtility } from './reduced-group-utility';
 
 /**
  * the default fallback display item grouping pair
@@ -112,8 +113,10 @@ export class DisplayItemUtility {
 
         DisplayItemUtility.setGrouping(items, groupId);
 
-        const grouped = ArrayUtility.groupBy(items, i => i.groupId as string);
-        return grouped;
+        const grouped = ArrayUtility.groupBy(items, (i: MenuDisplayItemModel) => i.groupId);
+        const reduced = ReducedGroupUtility.reduceToObject<MenuDisplayItemModel>(grouped);
+
+        return reduced;
     }
 
     /**

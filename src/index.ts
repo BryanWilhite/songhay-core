@@ -10,6 +10,7 @@ export { Fragment } from './models/fragment';
 export { FunctionDisplayModel } from './models/function-display.model';
 export { MenuDisplayItemModel } from './models/menu-display-item.model';
 export { Presentation } from './models/presentation';
+export { ReducedGroup } from './models/reduced-group';
 export { Segment } from './models/segment';
 export { Selectable } from './models/selectable';
 export { Sortable } from './models/sortable';
