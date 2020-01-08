@@ -32,6 +32,19 @@
             "problemMatcher": []
         },
         {
+            "label": "npx: jest [current open file]",
+            "type": "shell",
+            "command": "npx",
+            "args": [
+                "jest",
+                "${relativeFile}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
             "label": "typedoc: generate docs",
             "type": "shell",
             "command": "typedoc",

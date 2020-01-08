@@ -1,7 +1,7 @@
 import items from '../mocks/app-songhay-blog-q2-2018-items.json';
 import { MenuDisplayItemModel } from '../models/menu-display-item.model';
 
-import { DisplayItemUtility, DISPLAY_ITEM_GROUP_NONE } from './display-item.utility';
+import { DISPLAY_ITEM_GROUP_NONE, DisplayItemUtility } from './display-item.utility';
 import { MapObjectUtility } from './map-object.utility';
 
 it('should group flat set for display [empty or null Selectable map pairs]', () => {
@@ -139,7 +139,7 @@ it('should get a mapped pair or return a default pair', () => {
     );
 });
 
-fit('should sort fallback group to the end', () => {
+it('should sort fallback group to the end', () => {
 
     const mapForG1 = new Map<string, any>([['topic-one', 'First Topic'], ['group-one', 'Group One']]);
     const mapForG2 = new Map<string, any>([['group-two', 'Group Two']]);

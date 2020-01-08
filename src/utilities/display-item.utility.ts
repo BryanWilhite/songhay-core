@@ -111,10 +111,8 @@ export class DisplayItemUtility {
             throw new Error('The expected items are not here.');
         }
 
-        DisplayItemUtility.setGrouping(items, groupId);
-
-        const grouped = ArrayUtility.groupBy(items, (i: MenuDisplayItemModel) => i.groupId);
-        const reduced = ReducedGroupUtility.reduceToObject<MenuDisplayItemModel>(grouped);
+        const groups = ArrayUtility.groupBy(items, (i: MenuDisplayItemModel) => i.groupId);
+        const reduced = ReducedGroupUtility.reduceToObject<MenuDisplayItemModel>(groups);
 
         return reduced;
     }
@@ -185,6 +183,7 @@ export class DisplayItemUtility {
             .filter(i => i ? true : false)
             .forEach(i => {
                 const pair = DisplayItemUtility.getItemMapPair(i, groupId);
+
                 if (!pair) {
                     if (!i.groupId || !i.displayText) { doGroupPairWarning(i); }
                 } else {

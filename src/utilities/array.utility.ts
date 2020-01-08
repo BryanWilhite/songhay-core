@@ -43,7 +43,8 @@ export class ArrayUtility {
                 i: number,
                 dataRef: any,
                 k: any = keyGetter(current)
-            ) => ((accumulator[k] || (accumulator[k] = [])).push(current), accumulator), initialValue
+            ) => ((accumulator[k] || (accumulator[k] = [])).push(current), accumulator),
+            initialValue
         );
         const groupByModels: ReducedGroup[] = [];
 
