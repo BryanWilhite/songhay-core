@@ -32,13 +32,13 @@ it('should group flat set for display [Selectable map pairs]', () => {
     const mapForG3 = new Map<string, any>([['group-three', 'Group Three']]);
 
     const flat: MenuDisplayItemModel[] = [
-        { id: 1, displayText: 'item one [G1]', map: mapForG1 },
-        { id: 2, displayText: 'item two [G1]', map: mapForG1 },
-        { id: 3, displayText: 'item three [G1]', map: mapForG2 },
-        { id: 4, displayText: 'item four [G2]', map: mapForG2 },
-        { id: 5, displayText: 'item five [G2]', map: mapForG2 },
-        { id: 6, displayText: 'item six [G2]', map: mapForG2 },
-        { id: 7, displayText: 'item seven [G3]', map: mapForG3 }
+        { id: 8, displayText: 'item one [G1]', map: mapForG1 },
+        { id: 9, displayText: 'item two [G1]', map: mapForG1 },
+        { id: 10, displayText: 'item three [G1]', map: mapForG2 },
+        { id: 11, displayText: 'item four [G2]', map: mapForG2 },
+        { id: 12, displayText: 'item five [G2]', map: mapForG2 },
+        { id: 13, displayText: 'item six [G2]', map: mapForG2 },
+        { id: 14, displayText: 'item seven [G3]', map: mapForG3 }
     ];
 
     const grouped = DisplayItemUtility.displayInGroups(flat);
@@ -57,13 +57,13 @@ it('should group flat set for display [Selectable map pairs with prefix, sorted 
     const mapForG3 = new Map<string, any>([['group-three', 'Group Three'], ['group-year-month', '2019/04']]);
 
     const flat: MenuDisplayItemModel[] = [
-        { id: 1, displayText: 'item one [G1]', map: mapForG1 },
-        { id: 2, displayText: 'item two [G1]', map: mapForG1 },
-        { id: 3, displayText: 'item three [G1]', map: mapForG2 },
-        { id: 4, displayText: 'item four [G2]', map: mapForG2 },
-        { id: 5, displayText: 'item five [G2]', map: mapForG2 },
-        { id: 6, displayText: 'item six [G2]', map: mapForG2 },
-        { id: 7, displayText: 'item seven [G3]', map: mapForG3 }
+        { id: 15, displayText: 'item one [G1]', map: mapForG1 },
+        { id: 16, displayText: 'item two [G1]', map: mapForG1 },
+        { id: 17, displayText: 'item three [G1]', map: mapForG2 },
+        { id: 18, displayText: 'item four [G2]', map: mapForG2 },
+        { id: 19, displayText: 'item five [G2]', map: mapForG2 },
+        { id: 20, displayText: 'item six [G2]', map: mapForG2 },
+        { id: 21, displayText: 'item seven [G3]', map: mapForG3 }
     ];
 
     const grouped = DisplayItemUtility.displayInGroups(flat, 'group-', true);
@@ -82,13 +82,13 @@ it('should get stringifiable object from display item groups', () => {
     const mapForG3 = new Map<string, any>([['group-three', 'Group Three'], ['group-year-month', '2019/04']]);
 
     const flat: MenuDisplayItemModel[] = [
-        { id: 1, displayText: 'item one [G1]', map: mapForG1 },
-        { id: 2, displayText: 'item two [G1]', map: mapForG1 },
-        { id: 3, displayText: 'item three [G1]', map: mapForG2 },
-        { id: 4, displayText: 'item four [G2]', map: mapForG2 },
-        { id: 5, displayText: 'item five [G2]', map: mapForG2 },
-        { id: 6, displayText: 'item six [G2]', map: mapForG2 },
-        { id: 7, displayText: 'item seven [G3]', map: mapForG3 }
+        { id: 22, displayText: 'item one [G1]', map: mapForG1 },
+        { id: 23, displayText: 'item two [G1]', map: mapForG1 },
+        { id: 24, displayText: 'item three [G1]', map: mapForG2 },
+        { id: 25, displayText: 'item four [G2]', map: mapForG2 },
+        { id: 26, displayText: 'item five [G2]', map: mapForG2 },
+        { id: 27, displayText: 'item six [G2]', map: mapForG2 },
+        { id: 28, displayText: 'item seven [G3]', map: mapForG3 }
     ];
 
     const grouped = DisplayItemUtility.displayInGroups(flat, 'group-', true);
@@ -108,13 +108,13 @@ it('should stringify object from display item groups', () => {
     const mapForG3 = new Map<string, any>([['group-three', 'Group Three'], ['group-year-month', '2019/04']]);
 
     const flat: MenuDisplayItemModel[] = [
-        { id: 1, displayText: 'item one [G1]', map: mapForG1 },
-        { id: 2, displayText: 'item two [G1]', map: mapForG1 },
-        { id: 3, displayText: 'item three [G1]', map: mapForG2 },
-        { id: 4, displayText: 'item four [G2]', map: mapForG2 },
-        { id: 5, displayText: 'item five [G2]', map: mapForG2 },
-        { id: 6, displayText: 'item six [G2]', map: mapForG2 },
-        { id: 7, displayText: 'item seven [G3]', map: mapForG3 }
+        { id: 29, displayText: 'item one [G1]', map: mapForG1 },
+        { id: 30, displayText: 'item two [G1]', map: mapForG1 },
+        { id: 31, displayText: 'item three [G1]', map: mapForG2 },
+        { id: 32, displayText: 'item four [G2]', map: mapForG2 },
+        { id: 33, displayText: 'item five [G2]', map: mapForG2 },
+        { id: 34, displayText: 'item six [G2]', map: mapForG2 },
+        { id: 35, displayText: 'item seven [G3]', map: mapForG3 }
     ];
 
     const grouped = DisplayItemUtility.displayInGroups(flat, 'group-', true);
@@ -146,13 +146,13 @@ it('should sort fallback group to the end', () => {
     const mapForG3 = new Map<string, any>([['topic-two', 'Second Topic'], ['group-three', 'Group Three']]);
 
     const flat: MenuDisplayItemModel[] = [
-        { id: 1, displayText: 'item one [G1]', map: mapForG1 },
-        { id: 2, displayText: 'item two [G1]', map: mapForG1 },
-        { id: 3, displayText: 'item three [G1]', map: mapForG2 },
-        { id: 4, displayText: 'item four [G2]', map: mapForG2 },
-        { id: 5, displayText: 'item five [G2]', map: mapForG2 },
-        { id: 6, displayText: 'item six [G2]', map: mapForG2 },
-        { id: 7, displayText: 'item seven [G3]', map: mapForG3 }
+        { id: 36, displayText: 'item one [G1]', map: mapForG1 },
+        { id: 37, displayText: 'item two [G1]', map: mapForG1 },
+        { id: 38, displayText: 'item three [G1]', map: mapForG2 },
+        { id: 39, displayText: 'item four [G2]', map: mapForG2 },
+        { id: 40, displayText: 'item five [G2]', map: mapForG2 },
+        { id: 41, displayText: 'item six [G2]', map: mapForG2 },
+        { id: 42, displayText: 'item seven [G3]', map: mapForG3 }
     ];
 
     const grouped = DisplayItemUtility.displayInGroups(flat, 'topic-', false);
