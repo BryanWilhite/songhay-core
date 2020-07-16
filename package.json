@@ -34,13 +34,13 @@
     },
     "homepage": "https://github.com/BryanWilhite/songhay-core#readme",
     "devDependencies": {
-        "@types/jest": "^25.2.3",
+        "@types/jest": "^26.0.4",
         "@types/lodash": "^4.14.157",
-        "jest": "^25.5.4",
+        "jest": "^26.1.0",
         "lodash": "^4.17.19",
         "prettier": "^2.0.5",
-        "ts-jest": "^25.5.1",
-        "tslib": "^1.13.0",
+        "ts-jest": "^26.1.2",
+        "tslib": "^2.0.0",
         "tslint": "^6.1.2",
         "tslint-config-prettier": "^1.18.0",
         "typescript": "^3.9.7"
