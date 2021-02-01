@@ -4,17 +4,23 @@
         {
             "type": "npm",
             "script": "build",
-            "problemMatcher": ["$tslint5"]
+            "problemMatcher": [
+                "$tslint5"
+            ]
         },
         {
             "type": "npm",
             "script": "pack",
-            "problemMatcher": ["$tslint5"]
+            "problemMatcher": [
+                "$tslint5"
+            ]
         },
         {
             "type": "npm",
             "script": "release",
-            "problemMatcher": ["$tslint5"]
+            "problemMatcher": [
+                "$tslint5"
+            ]
         },
         {
             "type": "npm",
@@ -47,17 +53,9 @@
         {
             "label": "typedoc: generate docs",
             "type": "shell",
-            "command": "typedoc",
+            "command": "npx",
             "args": [
-                "--exclude",
-                "'**/*.spec.ts'",
-                "--mode",
-                "modules",
-                "--module",
-                "commonjs",
-                "--out",
-                "./docs",
-                "./src"
+                "typedoc",
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -89,7 +87,9 @@
         {
             "type": "typescript",
             "tsconfig": "tsconfig.json",
-            "problemMatcher": ["$tsc"],
+            "problemMatcher": [
+                "$tsc"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
