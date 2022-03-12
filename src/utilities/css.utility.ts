@@ -28,6 +28,64 @@ export class CssUtility {
     }
 
     /**
+     * gets @type {CSSStyleDeclaration} data
+     */
+    static getComputedStylePropertyValue(element: HTMLElement, propertyName: string): string | null {
+        if (!element) {
+            return null;
+        }
+        if (!propertyName) {
+            return null;
+        }
+
+        const elementStyle = window.getComputedStyle(element);
+
+        return elementStyle.getPropertyValue(propertyName);
+    }
+
+    /**
+     * gets @type {CSSStyleDeclaration} data
+     */
+     static getComputedStylePropertyValueById(elementId: string, propertyName: string): string | null {
+        if (!elementId) {
+            return null;
+        }
+        if (!propertyName) {
+            return null;
+        }
+
+        const element = window.document.getElementById(elementId);
+        if (!element) {
+            return null;
+        }
+
+        const elementStyle = window.getComputedStyle(element);
+
+        return elementStyle.getPropertyValue(propertyName);
+    }
+
+    /**
+     * gets @type {CSSStyleDeclaration} data
+     */
+     static getComputedStylePropertyValueByQuery(query: string, propertyName: string): string | null {
+        if (!query) {
+            return null;
+        }
+        if (!propertyName) {
+            return null;
+        }
+
+        const element = window.document.querySelector(query);
+        if (!element) {
+            return null;
+        }
+
+        const elementStyle = window.getComputedStyle(element);
+
+        return elementStyle.getPropertyValue(propertyName);
+    }
+
+    /**
      * gets opacity 0.70 format from "70" format
      */
     static getOpacity(opacity: string): number {
@@ -87,5 +145,23 @@ export class CssUtility {
      */
     static getUri(uri: string): string {
         return `url('${uri}')`;
+    }
+
+    /**
+     * gets @type {CSSStyleDeclaration} data
+     */
+     static setComputedStylePropertyValue(element: HTMLElement, propertyName: string, propertyValue: string): void {
+        if (!element) {
+            return;
+        }
+        if (!propertyName) {
+            return;
+        }
+        if (!propertyValue) {
+            return;
+        }
+
+        element.style.setProperty(propertyName, propertyValue);
+
     }
 }
