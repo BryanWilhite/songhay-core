@@ -1,0 +1,1 @@
+{"version":3,"file":"css-linear-gradient-data.js","sourceRoot":"","sources":["../src/models/css-linear-gradient-data.ts"],"names":[],"mappings":"AAAA;;;;GAIG;AACH;IACI;;OAEG;IACH,+BACI,KAAa,EACb,eAAuB,EACvB,kBAA0B;QAE1B,IAAI,CAAC,KAAK,GAAG,KAAK,CAAC;QACnB,IAAI,CAAC,eAAe,GAAG,eAAe,CAAC;QACvC,IAAI,CAAC,kBAAkB,GAAG,kBAAkB,CAAC;IACjD,CAAC;IAgBL,4BAAC;AAAD,CAAC,AA5BD,IA4BC"}

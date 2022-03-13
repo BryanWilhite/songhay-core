@@ -1,15 +1,9 @@
 {
     "name": "songhay",
-    "version": "0.1.19",
+    "version": "0.2.00",
     "description": "core, shared JS module for studio client-side projects",
-    "main": "core/index.js",
-    "types": "core/index.d.ts",
-    "directories": {
-        "lib": "./core"
-    },
-    "files": [
-        "core/*"
-    ],
+    "main": "index.js",
+    "types": "index.d.ts",
     "scripts": {
         "build": "tsc",
         "pack": "npm pack",

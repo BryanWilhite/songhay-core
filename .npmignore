@@ -1,0 +1,8 @@
+.vscode
+docs
+src
+*.tgz
+jest.config.js
+tsconfig.json
+tslint.json
+typedoc.json
