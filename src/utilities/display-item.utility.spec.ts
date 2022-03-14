@@ -1,4 +1,4 @@
-import items from '../mocks/app-songhay-blog-q2-2018-items.json';
+import JsonItems from '../mocks/app-songhay-blog-q2-2018-items.json';
 import { MenuDisplayItemModel } from '../models/menu-display-item.model';
 
 import { DISPLAY_ITEM_GROUP_NONE, DisplayItemUtility } from './display-item.utility';
@@ -72,7 +72,7 @@ it('should group flat set for display [Selectable map pairs with prefix, sorted 
 
     const key = 'group-three';
     expect(grouped.find(i => i.id === key)).toBeTruthy();
-    expect(grouped.find(i => i.id === key).childItems).toHaveLength(1);
+    expect(grouped.find(i => i.id === key)?.childItems).toHaveLength(1);
 });
 
 it('should get stringifiable object from display item groups', () => {
@@ -128,7 +128,8 @@ it('should stringify object from display item groups', () => {
 });
 
 it('should get a mapped pair or return a default pair', () => {
-    const item = [...items].find(i => i.id === 'studio-status-report-2019-03') as MenuDisplayItemModel;
+    const result = [...JsonItems].find(i => i.id === 'studio-status-report-2019-03');
+    const item =  result as MenuDisplayItemModel;
     expect(item).toBeTruthy();
     item.map = MapObjectUtility.getMap(item.map);
 

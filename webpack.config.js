@@ -17,7 +17,12 @@ const sharedConfig = {
         rules: [
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: { configFile: 'tsconfig.json'}
+                    }
+                ],
                 exclude: /node_modules/,
             },
         ],
@@ -27,11 +32,22 @@ const sharedConfig = {
     },
 };
 
+const outputLibraryConfig = {
+    library: {
+        name: 'rx',
+        type: 'var',
+    },
+};
+
 const defaultConfig = {
     name: 'default-config',
     output: {
         filename: 'songhay.js',
         path: path.resolve(__dirname, 'dist'),
+        ...outputLibraryConfig
+    },
+    optimization: {
+        minimize: false,
     },
 };
 
@@ -40,6 +56,7 @@ const optimizationConfig = {
     output: {
         filename: 'songhay.min.js',
         path: path.resolve(__dirname, 'dist'),
+        ...outputLibraryConfig
     },
     optimization: {
         minimizer: [new TerserJSPlugin({})],

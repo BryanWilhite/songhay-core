@@ -40,8 +40,6 @@ export class ArrayUtility {
             (
                 accumulator: any,
                 current: any,
-                i: number,
-                dataRef: any,
                 k: any = keyGetter(current)
             ) => ((accumulator[k] || (accumulator[k] = [])).push(current), accumulator),
             initialValue

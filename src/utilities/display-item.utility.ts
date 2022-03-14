@@ -23,7 +23,7 @@ export class DisplayItemUtility {
      */
     public static displayInGroups(items: MenuDisplayItemModel[], groupId?: string | number, sortDescending = false): MenuDisplayItemModel[] {
         DisplayItemUtility.setGrouping(items, groupId);
-        const groups = DisplayItemUtility.group(items, groupId);
+        const groups = DisplayItemUtility.group(items);
         return DisplayItemUtility.nestIntoGroups(groups, sortDescending);
     }
 
@@ -106,7 +106,7 @@ export class DisplayItemUtility {
      * groups the specified items
      * into an interim, anonymous object
      */
-    public static group(items: MenuDisplayItemModel[], groupId?: string | number): { [key: string]: MenuDisplayItemModel[] } {
+    public static group(items: MenuDisplayItemModel[]): { [key: string]: MenuDisplayItemModel[] } {
         if (!items) {
             throw new Error('The expected items are not here.');
         }
