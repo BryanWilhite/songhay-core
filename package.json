@@ -1,14 +1,21 @@
 {
     "name": "songhay",
-    "version": "0.2.00",
+    "version": "0.2.19",
     "description": "core, shared JS module for studio client-side projects",
-    "main": "index.js",
-    "types": "index.d.ts",
+    "main": "core/index.js",
+    "types": "core/index.d.ts",
+    "directories": {
+        "lib": "./core"
+    },
+    "files": [
+        "core/*"
+    ],
     "scripts": {
         "build": "tsc",
         "pack": "npm pack",
         "release": "npm test && npm run build && npm run pack && npm publish",
         "test": "npx jest",
+        "test:clear-cache": "npx jest --clearCache",
         "version:major": "npm version major -m \":rocket: :snowflake: version major up to %s\"",
         "version:minor": "npm version minor -m \":rocket: :snowflake: version minor up to %s\"",
         "version:patch": "npm version patch -m \":rocket: :snowflake: version patch up to %s\""
