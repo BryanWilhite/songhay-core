@@ -1,6 +1,6 @@
 /**
  * defines individual items
- * for {SyndicationFeed.feedItems}
+ * for @{SyndicationFeed.feedItems}
  *
  * @export
  */
