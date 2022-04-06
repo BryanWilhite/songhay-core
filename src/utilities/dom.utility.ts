@@ -5,6 +5,51 @@
  */
 export class DomUtility {
     /**
+     * gets the child element, extending @type {HTMLElement}
+     * from the specified query @type {string},
+     */
+    static getChildHtmlElementByQuery<TElement extends HTMLElement>(element: HTMLElement, query: string): TElement | null {
+
+        if (!element) {
+            console.warn('the expected parent element is not here');
+
+            return null;
+        }
+
+        return element.querySelector(query);
+    }
+
+    /**
+     * gets the child elements, extending @type {HTMLElement}
+     * from the specified query @type {string},
+     */
+    static getChildHtmlElementsByQuery<TElement extends HTMLElement>(element: HTMLElement, query: string): NodeListOf<TElement> | null {
+
+        if (!element) {
+            console.warn('the expected parent element is not here');
+
+            return null;
+        }
+
+        return element.querySelectorAll(query);
+    }
+
+    /**
+     * gets the child elements, extending @type {HTMLElement}
+     * from the specified query @type {string},
+     */
+    static getClosestHtmlElementByQuery<TElement extends HTMLElement>(element: HTMLElement, query: string): TElement | null {
+
+        if (!element) {
+            console.warn('the expected parent element is not here');
+
+            return null;
+        }
+
+        return element.closest(query);
+    }
+
+    /**
      * gets the element, extending @type {HTMLElement}
      * from the specified @type {ElementRef},
      * usually derived from @ViewChild
