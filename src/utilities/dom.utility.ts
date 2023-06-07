@@ -177,6 +177,18 @@ export class DomUtility {
     }
 
     /**
+     * runs the specified function of @type {() => void}
+     * when `DOMContentLoaded` fires for the browser window
+     */
+    static runWhenWindowContentLoaded(f: () => void): void {
+        if (!f) {
+            return;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => f());
+    }
+
+    /**
      * returns a @type {Promise} that resolves
      * in the specified milliseconds
      */
