@@ -1,3 +1,9 @@
+import {
+    FocusEventNames,
+    KeyboardEventNames,
+    MouseEventNames,
+    TouchEventNames } from 'src/models/event-names';
+
 /**
  * static members for DOM manipulation
  *
@@ -180,12 +186,27 @@ export class DomUtility {
      * runs the specified function of @type {() => void}
      * when `DOMContentLoaded` fires for the browser window
      */
-    static runWhenWindowContentLoaded(f: () => void): void {
+    static runWhenElementEvent<TElement extends HTMLElement>(
+        element: TElement,
+        eventName: FocusEventNames | KeyboardEventNames | MouseEventNames | TouchEventNames,
+        f: (e?: Event) => void): void {
         if (!f) {
             return;
         }
 
-        window.addEventListener('DOMContentLoaded', () => f());
+        element.addEventListener(eventName, (e) => f(e));
+    }
+
+    /**
+     * runs the specified function of @type {() => void}
+     * when `DOMContentLoaded` fires for the browser window
+     */
+    static runWhenWindowContentLoaded(f: (e?: Event) => void): void {
+        if (!f) {
+            return;
+        }
+
+        window.addEventListener('DOMContentLoaded', (e) => f(e));
     }
 
     /**
