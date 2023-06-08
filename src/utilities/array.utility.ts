@@ -33,8 +33,7 @@ export class ArrayUtility {
      *
      * @description https://github.com/BryanWilhite/songhay-core/issues/20
      */
-    // tslint:disable-next-line:ban-types
-    public static groupBy(reducible: any[], keyGetter: Function): ReducedGroup[] {
+    public static groupBy(reducible: any[], keyGetter: (current: any) => any): ReducedGroup[] {
         const initialValue = {};
         const groupByObjects = reducible.reduce(
             (

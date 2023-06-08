@@ -62,15 +62,18 @@ const flat: MenuDisplayItemModel[] = [
 ];
 
 it('should group flat set', () => {
-    const groups: ReducedGroup[] = ArrayUtility.groupBy(flat, (i: MenuDisplayItemModel) => i.groupId);
+    const groups: ReducedGroup[] = ArrayUtility.groupBy(flat, (i: MenuDisplayItemModel) => {
+        console.log({i});
+        return i.groupId;
+    });
     expect(groups).not.toBeNull();
     console.log({groups});
 
     const groupId = 'group-three';
     const group = groups.find(i => i.key === groupId);
-    expect(group.values).toHaveLength(1);
+    expect(group?.values).toHaveLength(1);
 
-    const first = group.values[0] as MenuDisplayItemModel;
+    const first = group?.values[0] as MenuDisplayItemModel;
     expect(first).not.toBeNull();
     console.log({first});
     expect(first.groupId).toEqual(groupId);
