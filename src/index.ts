@@ -6,17 +6,30 @@ export { CssLinearGradientData } from './models/css-linear-gradient-data';
 export { CssRedGreenBlue } from './models/css-red-green-blue';
 export { DisplayItemModel } from './models/display-item.model';
 export { Document } from './models/document';
+export {
+    ClipboardEventNames,
+    EventNames,
+    FocusEventNames,
+    KeyboardEventNames,
+    MouseEventNames,
+    TouchEventNames,
+    WindowEventNames } from 'src/models/event-names';
 export { Fragment } from './models/fragment';
 export { FunctionDisplayModel } from './models/function-display.model';
+export { Groupable } from './models/groupable';
 export { IndexEntry } from './models/index-entry';
+export { MenuDisplayItemModelGroups } from './models/menu-display-item-model-groups';
 export { MenuDisplayItemModel } from './models/menu-display-item.model';
 export { Presentation } from './models/presentation';
+export { PublicationItem } from './models/publication-item';
 export { ReducedGroup } from './models/reduced-group';
 export { SearchIndexEntry } from './models/search-index-entry';
 export { Segment } from './models/segment';
 export { Selectable } from './models/selectable';
 export { Sortable } from './models/sortable';
+export { SyndicationFeedItem } from './models/syndication-feed-item';
 export { SyndicationFeed } from './models/syndication-feed';
+export { Temporal } from './models/temporal';
 
 /* utilities */
 export { ArrayUtility } from './utilities/array.utility';
