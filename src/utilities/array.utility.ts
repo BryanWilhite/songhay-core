@@ -32,26 +32,32 @@ export class ArrayUtility {
      * reduces the specified reducible to @type {ReducedGroup} groups
      *
      * @description https://github.com/BryanWilhite/songhay-core/issues/20
+     * @see https://github.com/BryanWilhite/jupyter-central/blob/master/funkykb/typescript/array-reduce-group-by.ipynb
      */
-    public static groupBy(reducible: any[], keyGetter: (current: any) => any): ReducedGroup[] {
+    public static groupBy(reducible: {}[], keyGetter: (current: any) => any): ReducedGroup[] {
         const initialValue = {};
-        const groupByObjects = reducible.reduce(
+        const groupByObject = reducible.reduce(
             (
-                accumulator: any,
-                current: any,
-                k: any = keyGetter(current)
-            ) => ((accumulator[k] || (accumulator[k] = [])).push(current), accumulator),
+                accumulator: {},
+                current: {},
+            ) => {
+                const groupName: any = keyGetter(current);
+                accumulator[groupName] = accumulator[groupName] ?? [];
+                accumulator[groupName].push(current);
+
+                return accumulator;
+            },
             initialValue
         );
         const groupByModels: ReducedGroup[] = [];
 
-        for (const p in groupByObjects) {
-            if (!groupByObjects.hasOwnProperty(p)) {
+        for (const p in groupByObject) {
+            if (!groupByObject.hasOwnProperty(p)) {
                 continue;
             }
             groupByModels.push({
                 key: p,
-                values: groupByObjects[p]
+                values: groupByObject[p]
             });
         }
 

@@ -62,10 +62,7 @@ const flat: MenuDisplayItemModel[] = [
 ];
 
 it('should group flat set', () => {
-    const groups: ReducedGroup[] = ArrayUtility.groupBy(flat, (i: MenuDisplayItemModel) => {
-        console.log({i});
-        return i.groupId;
-    });
+    const groups: ReducedGroup[] = ArrayUtility.groupBy(flat, (i: MenuDisplayItemModel) => i.groupId);
     expect(groups).not.toBeNull();
     console.log({groups});
 
