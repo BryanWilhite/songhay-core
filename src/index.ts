@@ -30,6 +30,7 @@ export { Sortable } from './models/sortable';
 export { SyndicationFeedItem } from './models/syndication-feed-item';
 export { SyndicationFeed } from './models/syndication-feed';
 export { Temporal } from './models/temporal';
+export { WindowAnimation } from './models/window-animation';
 
 /* utilities */
 export { ArrayUtility } from './utilities/array.utility';
