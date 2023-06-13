@@ -14,7 +14,7 @@
     "scripts": {
         "build": "tsc",
         "pack": "npm pack",
-        "release": "npm test && npm run build && npm run pack && npm publish",
+        "release": "npm test && npm run build && npm run pack && npm publish --access=public",
         "test": "npx jest",
         "test:clear-cache": "npx jest --clearCache",
         "version:major": "npm version major -m \":rocket: :snowflake: version major up to %s\"",
